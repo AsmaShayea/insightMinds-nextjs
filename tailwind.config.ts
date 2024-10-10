@@ -8,9 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        sidebar: "0px 12px 250px 0px #A3B5D433",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        main: "#5A60F6",
+        lightGray: "#EAEAEC",
+        gray: "#606265",
+        black: "#29292E",
+        bgClr:"#F6F6F6",
+        lightGreen:"#EBFEF4",
+        green:"#3DDA67",
+        red:"#FA2057"
       },
     },
   },
