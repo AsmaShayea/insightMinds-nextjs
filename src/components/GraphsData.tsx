@@ -10,45 +10,30 @@ import Table from "./Table";
 import Feelings from "./Feelings";
 import Donut from "./Charts/Donut";
 
-
-const barsData = [
+const pieLabels = [
   {
-    title: "الطعام",
-    data: [
-      { value: 210, bgCls: "bg-green" },
-      { value: 80, bgCls: "bg-red" },
-      { value: 140, bgCls: "bg-lightGray" },
-    ],
+    name: "Happy",
+    bgClr: "rgba(75, 192, 75, 0.9)",
   },
   {
-    title: "الخدمة",
-    data: [
-      { value: 200, bgCls: "bg-green" },
-      { value: 60, bgCls: "bg-red" },
-      { value: 120, bgCls: "bg-lightGray" },
-    ],
+    name: "Angry",
+    bgClr: "rgba(255, 99, 132, 0.9)",
   },
   {
-    title: "النظافة",
-    data: [
-      { value: 220, bgCls: "bg-green" },
-      { value: 100, bgCls: "bg-red" },
-      { value: 150, bgCls: "bg-lightGray" },
-    ],
+    name: "Satisfied",
+    bgClr: "rgba(255, 159, 64, 0.9)",
   },
   {
-    title: "البيئة",
-    data: [
-      { value: 220, bgCls: "bg-green" },
-      { value: 90, bgCls: "bg-red" },
-      { value: 140, bgCls: "bg-lightGray" },
-    ],
+    name: "Disappointed",
+    bgClr: "rgba(54, 162, 235, 0.9)",
+  },
+  {
+    name: "Excited",
+    bgClr: "rgba(54, 162, 235, 0.5)",
   },
 ];
 
-const GraphsData = () => {
- 
-
+const GraphsData = ({ data }: { data: any }) => {
   return (
     <div className="w-[58%] pr-[24px] flex flex-col gap-[24px]">
       {/* Graphs  */}
@@ -65,7 +50,9 @@ const GraphsData = () => {
                 <div className="flex items-center gap-[8px]">
                   <FaceSmileIcon className="w-[24px] h-[24px] text-green" />
                   <div className="flex flex-col">
-                    <p className="text-[14px] leading-[19px] font-[700]">85%</p>
+                    <p className="text-[14px] leading-[19px] font-[700]">
+                      {data?.overal_sentiment?.positive?.percentage}%
+                    </p>
                     <p className="text-[14px] leading-[19px] font-[400]">
                       ايجابي
                     </p>
@@ -74,13 +61,15 @@ const GraphsData = () => {
                 <div className="flex items-center gap-[8px]">
                   <FaceFrownIcon className="w-[24px] h-[24px] text-[#FA2057]" />
                   <div className="flex flex-col">
-                    <p className="text-[14px] leading-[19px] font-[700]">5%</p>
+                    <p className="text-[14px] leading-[19px] font-[700]">
+                      {data?.overal_sentiment?.negative?.percentage}%
+                    </p>
                     <p className="text-[14px] leading-[19px] font-[400]">
                       سلبي
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-[8px]">
+                {/* <div className="flex items-center gap-[8px]">
                   <CiFaceMeh className="w-[24px] h-[24px] text-gray" />
                   <div className="flex flex-col">
                     <p className="text-[14px] leading-[19px] font-[700]">10%</p>
@@ -88,14 +77,17 @@ const GraphsData = () => {
                       محايد
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="flex items-center justify-center w-[55%]  relative">
                 <div className="text-[12px] leading-[16px] font-[600] text-black absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] text-center">
                   تقسيم <br />
                   تفصيلي
                 </div>
-              <Donut />
+                <Donut
+                  negativeCnt={data?.overal_sentiment?.negative.count}
+                  positiveCnt={data?.overal_sentiment?.positive.count}
+                />
               </div>
             </div>
           </div>
@@ -104,9 +96,23 @@ const GraphsData = () => {
             <div className="text-[16px] leading-[21px] text-black font-[600]">
               المشاعر
             </div>
-            <div className="flex items-center gap-[16px]">
-              <div className="flex items-center w-full justify-center  relative">
-                <PieChart />
+            <div className="flex items-center justify-between gap-[20px]">
+              <div className="flex items-center justify-center relative">
+                <PieChart data={data?.overall_review_tone} />
+              </div>
+              <div className="flex flex-col ">
+                {pieLabels.map((lable, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-[8px] text-[12px] leading-[110%] mb-[10px] font-semibold"
+                  >
+                    <div
+                      style={{ background: `${lable.bgClr}` }}
+                      className="w-[10px] h-[10px] rounded-full "
+                    ></div>
+                    <div>{lable.name}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -120,31 +126,36 @@ const GraphsData = () => {
               المشاعر حسب الموضوع{" "}
             </div>
             <div className="flex flex-col items-center gap-[16px]">
-              {barsData.map((d, index) => (
+              {data?.most_popular_aspects?.map((d: any, index: number) => (
                 <div
                   key={index}
                   className="flex items-center justify-between w-full relative gap-[10px]"
                 >
                   <div className="text-[14px] leading-[19px] text-black">
-                    {d.title}
+                    {d.aspect}
                   </div>
                   <div className="max-w-[240px] w-full flex h-[20px] rounded-full overflow-hidden text-[10px] leading-[14px] font-[500]">
-                    {d.data.map((item, index) => {
+                    {/* {d.data.map((item, index) => {
                       const total = d.data.reduce(
                         (acc, curr) => acc + curr.value,
                         0
                       );
-                      const percent = (item.value / total) * 100;
-                      return (
-                        <div
-                          key={index}
-                          style={{ width: `${percent}%` }}
-                          className={`flex items-center justify-center ${item.bgCls} w-[${percent}%]`}
-                        >
-                          {item.value}
-                        </div>
-                      );
-                    })}
+                      const percent = (item.value / total) * 100; */}
+                    {/* return ( */}
+                    <div
+                      style={{ width: `${d?.positive?.percentage}%` }}
+                      className={`flex items-center justify-center bg-green w-[${d?.positive?.percentage}%]`}
+                    >
+                      {d?.positive?.count}
+                    </div>
+                    <div
+                      style={{ width: `${d?.negative?.percentage}%` }}
+                      className={`flex items-center justify-center bg-red w-[${d?.negative?.percentage}%]`}
+                    >
+                      {d?.negative?.count}
+                    </div>
+                    {/* );
+                    })} */}
                   </div>
                 </div>
               ))}
@@ -173,14 +184,14 @@ const GraphsData = () => {
               </div>
             </div>
             <div className="w-full h-full">
-              <LineChart />
+              <LineChart data={data?.get_aspect_counts_by_month} />
             </div>
           </div>
         </div>
       </div>
       {/* Table  */}
-      <Table />
-      <Feelings />
+      <Table data={data?.topicOpinions} />
+      <Feelings data={data?.get_category_sentiment} />
     </div>
   );
 };

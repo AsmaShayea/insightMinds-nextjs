@@ -20,7 +20,7 @@ const options = [
 ];
 
 const Settings = () => {
-  const [activeOpt, setActiveOpt] = useState("1");
+  const [activeOpt, setActiveOpt] = useState(["1"]);
 
   return (
     <div className="p-[48px] flex flex-col">
@@ -46,14 +46,21 @@ const Settings = () => {
             {options.map((op, index) => (
               <div
                 key={index}
-                onClick={() => setActiveOpt(op.id)}
+                // onClick={() => setActiveOpt(op.id)}
+                onClick={() =>
+                  setActiveOpt((prevState) =>
+                    prevState.includes(op.id)
+                      ? prevState.filter((id) => id !== op.id)
+                      : [...prevState, op.id]
+                  )
+                }
                 className={`h-[44px] flex items-center cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] ${
-                  op.id == activeOpt
+                  activeOpt.includes(op.id)
                     ? "border-green bg-lightGreen"
                     : "bg-white border-lightGray"
                 }`}
               >
-                {op.id == activeOpt && (
+                {activeOpt.includes(op.id) && (
                   <CheckCircleIcon className="h-[19px] w-[19px] text-green" />
                 )}
                 <span className="text-[16px] leading-[21px] font-[400] text-black">

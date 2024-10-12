@@ -34,10 +34,11 @@ const Sidebar = () => {
         </div>
 
         <div className="flex flex-col w-full gap-[24px]">
-          <div
+          <Link
+            href={"/dashboard"}
             className={`w-full flex gap-[8px] items-center ${
               !showSidebar && "justify-center"
-            } py-[8px] px-[16px] h-[48px] text-white cursor-pointer bg-main rounded-full`}
+            } py-[8px] px-[16px] h-[48px]  text-white cursor-pointer bg-main rounded-full`}
           >
             <RectangleStackIcon className="h-[20px] w-[20px] " />
             <span
@@ -47,7 +48,7 @@ const Sidebar = () => {
             >
               حسابات عملي
             </span>
-          </div>
+          </Link>
           <div className="w-full bg-lightGray h-[1px]" />
           <div
             className={`${showSidebar ? "flex" : "hidden"} flex-col gap-[16px]`}
@@ -56,7 +57,7 @@ const Sidebar = () => {
               <div className="text-gray text-[14px] leading-[18px] font-[400]">
                 المواضيع
               </div>
-              <div className="flex gap-[8px] items-center text-black cursor-pointer">
+              <div className="flex gap-[8px]  items-center hover:text-main transition-all duration-300 ease-in-out text-black cursor-pointer">
                 <PlusIcon className="h-[16px] w-[16px] " />
                 <span className="text-[14px] leading-[17px] font-[400]">
                   إضافة
@@ -68,7 +69,7 @@ const Sidebar = () => {
                 <Link
                   href={link.link}
                   key={index}
-                  className="w-full h-[48px] text-[14px] leading-[19px] text-black py-[4px] flex items-center"
+                  className="w-full h-[48px]  text-[14px] hover:text-main transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex items-center"
                 >
                   {link.name}
                 </Link>
@@ -80,8 +81,9 @@ const Sidebar = () => {
               showSidebar ? "block" : "hidden"
             } w-full bg-lightGray h-[1px] `}
           />
-          <div
-            className={`px-[16px] py-[8px] flex gap-[8px] items-center ${
+          <Link
+            href={"/dashboard/settings"}
+            className={`px-[16px] py-[8px] hover:text-main transition-all duration-300 ease-in-out  flex gap-[8px] items-center ${
               !showSidebar && "justify-center"
             } cursor-pointer text-black h-[48px]`}
           >
@@ -89,15 +91,15 @@ const Sidebar = () => {
             <span
               className={`${
                 showSidebar ? "flex" : "hidden"
-              } text-[14px] leading-[19px] text-black font-[500]`}
+              } text-[14px] leading-[19px] font-[500]`}
             >
               الإعدادات
             </span>
-          </div>
+          </Link>
         </div>
         <div
           onClick={() => setShowSidebar(!showSidebar)}
-          className="bg-bgClr absolute left-[-45px] top-[70px] h-[44px] w-[44px] cursor-pointer flex items-center justify-center p-[10px] rounded-full border border-lightGray gap-[10px]"
+          className="bg-bgClr absolute left-[-45px] transition-all duration-300 ease-in-out hover:bg-[#E9ECEF] hover:border-[#CED4DA] hover:shadow-sm shadow-[#7C91B01A] top-[70px] h-[44px] w-[44px] cursor-pointer flex items-center justify-center p-[10px] rounded-full border border-lightGray gap-[10px]"
         >
           <div className="w-[24px] h-[24px] flex items-center justify-center gap-[5px]">
             <div

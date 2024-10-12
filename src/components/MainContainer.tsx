@@ -48,7 +48,7 @@ const tabs = [
 ];
 
 const MainContainer = () => {
-  const [activeOpt, setActiveOpt] = useState("1");
+  const [activeOpt, setActiveOpt] = useState(['1']);
   const [activeTab, setActiveTab] = useState("a");
   const [startDate, setStartDate] = useState<Date>(null);
   const [endDate, setEndDate] = useState<Date>(null);
@@ -60,13 +60,14 @@ const MainContainer = () => {
           {options.map((op, index) => (
             <div
               key={index}
-              className={`h-[44px] flex items-center cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] ${
-                op.id == activeOpt
+              onClick={() => setActiveOpt(prevState => prevState.includes(op.id) ? prevState.filter(id => id !== op.id) : [...prevState, op.id])}
+              className={`h-[44px] flex items-center hover:border-green transition-all duration-300 ease-in-out cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] ${
+                activeOpt.includes(op.id)
                   ? "border-green bg-lightGreen"
                   : "bg-white border-lightGray"
               }`}
             >
-              {op.id == activeOpt && (
+              {activeOpt.includes(op.id) && (
                 <CheckCircleIcon className="h-[21px] w-[21px] text-green" />
               )}
               <span className="text-[16px] leading-[21px] font-[400] text-black">
@@ -77,7 +78,7 @@ const MainContainer = () => {
           ))}
         </div>
         <div className="flex items-center gap-[16px]">
-          <div className="relative flex items-center justify-between border text-[14px] leading-[19px] font-[500] text-black border-lightGray bg-white px-[16px] py-[8px] rounded-[8px]  w-full gap-[14px] max-w-[250px] ">
+          <div className="relative flex items-center  justify-between border hover:border-green transition-all duration-300 ease-in-out text-[14px] leading-[19px] font-[500] text-black border-lightGray bg-white px-[16px] py-[8px] rounded-[8px]  w-full gap-[14px] max-w-[250px] ">
             <DatePicker
               selected={startDate}
               onChange={(dates: [Date | null, Date | null]) => {
@@ -96,7 +97,7 @@ const MainContainer = () => {
             <CalendarDaysIcon className="h-[22px] w-[22px] text-black" />
           </div>
           <div
-            className={`h-[44px] flex items-center cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] bg-white border-lightGray`}
+            className={`h-[44px] flex items-center cursor-pointer gap-[10px] hover:border-green transition-all duration-300 ease-in-out rounded-[16px] py-[8px] px-[16px] border-[1.5px] bg-white border-lightGray`}
           >
             <span className="text-[16px] leading-[21px] font-[400] text-black">
               مرشحات
@@ -104,7 +105,7 @@ const MainContainer = () => {
             <AdjustmentsHorizontalIcon className="h-[22px] w-[22px] text-black" />
           </div>
           <div
-            className={`h-[44px] flex items-center cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] bg-white border-lightGray`}
+            className={`h-[44px] flex items-center cursor-pointer gap-[10px] hover:border-green transition-all duration-300 ease-in-out rounded-[16px] py-[8px] px-[16px] border-[1.5px] bg-white border-lightGray`}
           >
             <span className="text-[16px] leading-[21px] font-[400] text-black">
               تصدير
@@ -118,8 +119,11 @@ const MainContainer = () => {
         {tabs.map((t, index) => (
           <div
             key={index}
-            className={`h-[44px] flex items-center cursor-pointer gap-[8px]  text-[16px] leading-[21px] rounded-[16px] py-[8px] px-[16px] ${
-              t.id == activeTab ? "bg-main  text-white" : "bg-bgClr text-black"
+            onClick={() => setActiveTab(t.id)}
+            className={`h-[44px] flex items-center cursor-pointer hover:border-main border   transition-all duration-300 ease-in-out gap-[8px]  text-[16px] leading-[21px] rounded-[16px] py-[8px] px-[16px] ${
+              t.id == activeTab
+                ? "bg-main  text-white border-main"
+                : "bg-bgClr text-black border-transparent hover:bg-[#ECECFE]"
             }`}
           >
             {t.icon}

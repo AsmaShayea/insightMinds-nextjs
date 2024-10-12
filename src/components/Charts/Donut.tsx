@@ -6,16 +6,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-const data = {
-  datasets: [
-    {
-      data: [20, 5, 13],
-      backgroundColor: ["#3DDA67", "#FA2057", "#EAEAEC"],
-      borderColor: ["#3DDA67", "#FA2057", "#EAEAEC"],
-      borderWidth: 1,
-    },
-  ],
-};
+
 
 const options = {
   responsive: true,
@@ -24,16 +15,26 @@ const options = {
     //     position: "top" as const,
     //   },
     tooltip: {
-      callbacks: {
-        label: function (tooltipItem: any) {
-          return `${tooltipItem.raw}%`;
-        },
-      },
+      // callbacks: {
+      //   label: function (tooltipItem: any) {
+      //     return `${tooltipItem.raw}%`;
+      //   },
+      // },
     },
   },
   cutout: "75%",
 };
-const Donut = ({classN}:{classN?:string}) => {
+const Donut = ({classN , positiveCnt,negativeCnt}:{classN?:string, negativeCnt:number, positiveCnt:number}) => {
+  const data = {
+    datasets: [
+      {
+        data: [positiveCnt, negativeCnt],
+        backgroundColor: ["#3DDA67", "#FA2057"],
+        borderColor: ["#3DDA67", "#FA2057"],
+        borderWidth: 1,
+      },
+    ],
+  };
   return (
     <Doughnut
       data={data}
