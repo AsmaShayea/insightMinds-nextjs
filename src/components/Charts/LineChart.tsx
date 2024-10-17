@@ -173,10 +173,35 @@ const LineChart = ({ data }: { data: any }) => {
   }, []);
 
   return (
-    <div className="w-full h-full">
-      {" "}
-      {/* Light green background */}
-      <Line ref={chartRef} data={chartData} options={options} />
+    // <div className="w-full h-full">
+    //   {" "}
+    //   {/* Light green background */}
+    //   <Line ref={chartRef} data={chartData} options={options} />
+    // </div>
+    <div className="bg-white shadow-sidebar h-[250px] w-full p-[16px] rounded-[16px] flex flex-col justify-between gap-[16px]">
+      <div className="flex items-center justify-between gap-[10px]">
+        <div className="text-[16px] leading-[21px] text-black font-[600]">
+          الاراء
+        </div>
+
+        <div className="flex items-center gap-[24px] text-black">
+          <div className="flex items-center gap-[5px]">
+            <div className="w-[12px] h-[12px] rounded-full bg-green" />
+            <span className="text-[12px] leading-[16px] font-[400] ">
+              ايجابية
+            </span>
+          </div>
+          <div className="flex items-center gap-[5px]">
+            <div className="w-[12px] h-[12px] rounded-full bg-red" />
+            <span className="text-[12px] leading-[16px] font-[400] ">
+              سلبية
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="w-full h-full">
+        <Line ref={chartRef} data={chartData} options={options} />
+      </div>
     </div>
   );
 };

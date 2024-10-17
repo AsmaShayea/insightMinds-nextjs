@@ -2,7 +2,8 @@
 
 import { CheckCircleIcon } from "@heroicons/react/16/solid";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const options = [
   {
@@ -20,7 +21,54 @@ const options = [
 ];
 
 const Settings = () => {
-  const [activeOpt, setActiveOpt] = useState(["1"]);
+  // const [activeOpt, setActiveOpt] = useState("1");
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    category: "",
+    type: "",
+    subtype: "",
+    description: "",
+  });
+
+  const handleChange = (e: any) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          "https://insights-mind-7646dfe71e1b.herokuapp.com/get-business-details/66eb726e1b898c92f06c243f"
+        );
+        const result = await response.data;
+
+        setData(result?.data);
+        setFormData({
+          ...formData,
+          name: result?.name,
+          category: result?.category,
+          type: result?.type,
+          subtype: result?.subtypes,
+          description: result?.description,
+        });
+
+        console.log(result, "responsed");
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="p-[48px] flex flex-col">
@@ -35,25 +83,36 @@ const Settings = () => {
           <input
             type="text"
             placeholder="Insight Minds"
+            value={formData.name}
+            name="name"
+            onChange={handleChange}
             className="bg-white border outline-none w-full border-lightGray p-[16px] rounded-[16px] "
           />
         </div>
-        <div className="flex flex-col gap-[8px] text-[14px] leading-[19px] text-black font-[500] max-w-[520px]">
+        <div className="flex flex-col gap-[8px] text-[14px] leading-[19px] text-black font-[500] max-w-[320px]">
           <label htmlFor="" className="">
             الفئة
           </label>
           <div className="flex items-center gap-[16px]">
-            {options.map((op, index) => (
+            <input
+              type="text"
+              placeholder=""
+              value={formData.category}
+              onChange={handleChange}
+              name="category"
+              className="bg-white border outline-none w-full border-lightGray p-[16px] rounded-[16px] "
+            />
+            {/* {options.map((op, index) => (
               <div
                 key={index}
-                // onClick={() => setActiveOpt(op.id)}
-                onClick={() =>
-                  setActiveOpt((prevState) =>
-                    prevState.includes(op.id)
-                      ? prevState.filter((id) => id !== op.id)
-                      : [...prevState, op.id]
-                  )
-                }
+                onClick={() => setActiveOpt(op.id)}
+                // onClick={() =>
+                //   setActiveOpt((prevState) =>
+                //     prevState.includes(op.id)
+                //       ? prevState.filter((id) => id !== op.id)
+                //       : [...prevState, op.id]
+                //   )
+                // }
                 className={`h-[44px] flex items-center cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] ${
                   activeOpt.includes(op.id)
                     ? "border-green bg-lightGreen"
@@ -67,30 +126,46 @@ const Settings = () => {
                   {op.name}
                 </span>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
         <div className="flex flex-col gap-[8px] relative text-[14px] leading-[19px] text-black font-[500] max-w-[320px]">
           <label htmlFor="" className="">
             نوع{" "}
           </label>
-          <select className="bg-white border  outline-none appearance-none w-full border-lightGray p-[16px] rounded-[16px] ">
+          {/* <select className="bg-white border  outline-none appearance-none w-full border-lightGray p-[16px] rounded-[16px] ">
             <option value="1">اسم النوع</option>
             <option value="2">اسم النوع</option>
             <option value="3">اسم النوع</option>
-          </select>
-          <ChevronDownIcon className="h-[20px] w-[20px] text-black absolute bottom-[14px] left-[14px]" />
+          </select> */}
+          <input
+            onChange={handleChange}
+            type="text"
+            value={formData.type}
+            name="type"
+            placeholder="Insight Minds"
+            className="bg-white border outline-none w-full border-lightGray p-[16px] rounded-[16px] "
+          />
+          {/* <ChevronDownIcon className="h-[20px] w-[20px] text-black absolute bottom-[14px] left-[14px]" /> */}
         </div>
         <div className="flex flex-col gap-[8px] relative text-[14px] leading-[19px] text-black font-[500] max-w-[320px]">
           <label htmlFor="" className="">
             نوع فرعي{" "}
           </label>
-          <select className="bg-white border  outline-none appearance-none w-full border-lightGray p-[16px] rounded-[16px] ">
+          <input
+            type="text"
+            onChange={handleChange}
+            placeholder=""
+            name="subtype"
+            value={formData.subtype}
+            className="bg-white border outline-none w-full border-lightGray p-[16px] rounded-[16px] "
+          />
+          {/* <select className="bg-white border  outline-none appearance-none w-full border-lightGray p-[16px] rounded-[16px] ">
             <option value="1">اسم النوع</option>
             <option value="2">اسم النوع</option>
             <option value="3">اسم النوع</option>
           </select>
-          <ChevronDownIcon className="h-[20px] w-[20px] text-black absolute bottom-[14px] left-[14px]" />
+          <ChevronDownIcon className="h-[20px] w-[20px] text-black absolute bottom-[14px] left-[14px]" /> */}
         </div>
         <div className="flex flex-col gap-[8px] text-[14px] leading-[19px] text-black font-[500] w-full">
           <label htmlFor="" className="">
@@ -98,6 +173,9 @@ const Settings = () => {
           </label>
           <textarea
             placeholder="شركة الإبداع التكنولوجي هي شرك"
+            value={formData.description}
+            name="description"
+            onChange={handleChange}
             className="bg-white border outline-none w-full h-[120px] border-lightGray p-[16px] rounded-[16px] "
           ></textarea>
         </div>

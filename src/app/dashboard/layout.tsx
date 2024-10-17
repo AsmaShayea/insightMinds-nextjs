@@ -12,9 +12,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex w-full relative h-screen overflow-hidden">
+    <div className="flex lg:flex-row flex-col w-full relative h-screen overflow-hidden">
       <Sidebar />
-      <div className="w-full overflow-y-auto">{children}</div>
+      <div className="w-full overflow-y-auto relative">{children}</div>
     </div>
   );
 }

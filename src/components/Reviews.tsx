@@ -24,7 +24,7 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
   console.log(data);
 
   return (
-    <div className="flex flex-col gap-[16px] w-[42%]">
+    <div className="flex flex-col gap-[16px] w-full lg:w-[42%]">
       <div className="flex flex-col gap-[16px]">
         <h2 className="text-[16px] leading-[21px] font-[600] text-black">
           اراء العملاء
@@ -45,22 +45,22 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-[16px] ">
+      <div className="flex flex-col gap-[16px] lg:max-h-[900px] lg:overflow-y-auto custom_scroll">
         {loading ? (
           <div>Laoding reviews</div>
         ) : (
           <>
             {activeTab === "Positive" &&
               data?.positive_reviews?.map((review: any, index: number) => (
-                <ReviewBox review={review} key={index} />
+                <ReviewBox key={"positive"} review={review} key={index} />
               ))}
             {activeTab === "Negative" &&
               data?.negative_reviews?.map((review: any, index: number) => (
-                <ReviewBox review={review} key={index} />
+                <ReviewBox key={"negative"} review={review} key={index} />
               ))}
             {activeTab === "Neutral" &&
               data?.neutral_reviews?.map((review: any, index: number) => (
-                <ReviewBox review={review} key={index} />
+                <ReviewBox key={"neutral"} review={review} key={index} />
               ))}
           </>
         )}

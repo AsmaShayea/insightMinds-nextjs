@@ -37,19 +37,7 @@ const Table = ({ data }: { data: any }) => {
         اشهر المواضيع{" "}
       </div>
       <div className="flex border-b border-lightGray w-full">
-        {/* {tabs.map((tab, index) => (
-          <div
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-[16px] cursor-pointer py-[8px] h-[34px] border-b ${
-              tab.id == activeTab
-                ? "bg-[#EBFEF4] border-green text-black"
-                : "border-transparent text-black"
-            } text-[14px] leading-[19px] font-[500] flex items-center justify-center`}
-            key={index}
-          >
-            {tab.name}
-          </div>
-        ))} */}
+      
         <div
           onClick={() => setActiveTab("p")}
           className={`px-[16px] cursor-pointer py-[8px] h-[34px] border-b ${

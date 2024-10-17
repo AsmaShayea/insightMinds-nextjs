@@ -1,10 +1,11 @@
-export const Logo = () => (
+export const Logo = ({ cl }: { cl?: string }) => (
   <svg
     width="142"
     height="56"
     viewBox="0 0 142 56"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={`${cl} h-[52px] object-cover`}
   >
     <path
       d="M0 14C0 6.26801 6.2632 0 13.9892 0H41.9677C49.6938 0 55.957 6.26801 55.957 14V42C55.957 49.732 49.6938 56 41.9677 56H13.9892C6.2632 56 0 49.732 0 42V14Z"
@@ -84,5 +85,3 @@ export const LogoS = () => (
     />
   </svg>
 );
-
-
