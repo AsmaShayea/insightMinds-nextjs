@@ -30,16 +30,17 @@ const Sidebar = () => {
       <div
         className={`bg-black/60 ${
           showSideM ? "right-0 left-0 top-0 bottom-0" : "right-[-100%]"
-        }  overflow-hidden fixed lg:hidden h-full w-full z-[99]`}
+        }  overflow-hidden fixed lg:hidden h-full w-full z-[1009] `}
+        onClick={()=> toggleSidebar()}
       ></div>
 
       <div
         className={`fixed lg:sticky  z-[9999] ${
-          showSideM
-            ? "top-0 right-0 left-0"
-            : "right-[-100%] lg:right-auto"
+          showSideM ? "top-0 right-0 left-0" : "right-[-100%] lg:right-auto"
         } overflow-hidden lg:overflow-visible flex-shrink-0 transition-all duration-300 ease-in-out ${
-          showSidebar ? "lg:max-w-[280px] max-w-[380px]" : "max-w-[380px] lg:max-w-[106px]"
+          showSidebar
+            ? "lg:max-w-[280px] max-w-[380px]"
+            : "max-w-[380px] lg:max-w-[106px]"
         }  w-full py-[48px] px-[24px] bg-white shadow-sidebar h-[100vh]`}
       >
         <div className="w-full h-full relative z-[999] flex flex-col items-center gap-[88px]">
@@ -85,6 +86,7 @@ const Sidebar = () => {
           <div className="flex flex-col w-full gap-[24px]">
             <Link
               href={"/dashboard"}
+              onClick={() => toggleSidebar()}
               className={`w-full flex gap-[8px] items-center ${
                 !showSidebar && "justify-center"
               } py-[8px] px-[16px] h-[48px]  text-white cursor-pointer bg-main rounded-full`}
@@ -119,6 +121,7 @@ const Sidebar = () => {
                 {links.map((link, index) => (
                   <Link
                     href={link.link}
+                    onClick={() => toggleSidebar()}
                     key={index}
                     className="w-full h-[48px]  text-[14px] hover:text-main transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex items-center"
                   >
@@ -134,6 +137,7 @@ const Sidebar = () => {
             />
             <Link
               href={"/dashboard/settings"}
+              onClick={() => toggleSidebar()}
               className={`px-[16px] py-[8px] hover:text-main transition-all duration-300 ease-in-out  flex gap-[8px] items-center ${
                 !showSidebar && "justify-center"
               } cursor-pointer text-black h-[48px]`}

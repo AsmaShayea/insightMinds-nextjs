@@ -1,5 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import type { Metadata } from "next";
+import MobileNav from "../../components/MobileNav";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -14,6 +15,7 @@ export default function DashboardLayout({
   return (
     <div className="flex lg:flex-row flex-col w-full relative h-screen overflow-hidden">
       <Sidebar />
+      <MobileNav />
       <div className="w-full overflow-y-auto relative">{children}</div>
     </div>
   );

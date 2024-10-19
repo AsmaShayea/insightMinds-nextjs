@@ -79,55 +79,10 @@ const MainContainer = ({
   const [startDate, setStartDate] = useState<Date>(null);
   const [endDate, setEndDate] = useState<Date>(null);
 
-  // const [click, setClick] = useState(false);
-
-  // const toggle = () => {
-  //   setClick(!click);
-  // };
-  const { showSideM, toggleSidebar } = useGlobalContext();
 
   return (
     <>
-      <div className="flex items-center sticky py-[12px] px-[20px] h-[70px] top-0 left-0 right-0 bg-white z-[999] justify-between lg:hidden w-full">
-        <div className="flex items-center mt-[10px]">
-          <Logo cl="!h-[40px]" />
-        </div>
-        <button
-          className="w-6 h-6 cursor-pointer transition-all ease duration-300"
-          onClick={toggleSidebar}
-        >
-          <div className="relative">
-            <span
-              className="absolute top-0 left-0 inline-block w-full h-0.5 bg-[#0F172A] rounded transition-all ease duration-200"
-              style={{
-                transform: false
-                  ? "rotate(-45deg) translateY(0)"
-                  : "rotate(0deg) translateY(6px)",
-              }}
-            >
-              &nbsp;
-            </span>
-            <span
-              className="absolute top-0 left-0 inline-block w-full h-0.5 bg-[#0F172A] rounded transition-all ease duration-200"
-              style={{
-                opacity: false ? 0 : 1,
-              }}
-            >
-              &nbsp;
-            </span>
-            <span
-              className="absolute top-0 left-0 inline-block w-full h-0.5 bg-[#0F172A] rounded transition-all ease duration-200"
-              style={{
-                transform: false
-                  ? "rotate(45deg) translateY(0)"
-                  : "rotate(0deg) translateY(-6px)",
-              }}
-            >
-              &nbsp;
-            </span>
-          </div>
-        </button>
-      </div>
+    
       <div className="bg-white shadow-sidebar relative z-[10]  p-[24px] px-[20px] lg:p-[48px] lg:pb-[32px] flex flex-col gap-[16px] lg:gap-[24px] w-full ">
         <div className="w-full lg:hidden bg-lightGray h-[1px]" />
 
@@ -215,7 +170,7 @@ const MainContainer = ({
         </div>
       </div>
       {activeTab == "1" && (
-        <div className="flex border-b lg:hidden sticky top-[68px] z-[999] left-0 right-0 bg-white border-lightGray w-full">
+        <div className="flex border-b lg:hidden sticky top-[-2px] z-[999] left-0 right-0 bg-white border-lightGray w-full">
           {tabsMob.map((tab, index) => (
             <div
               onClick={() => setMobTab(tab.id)}

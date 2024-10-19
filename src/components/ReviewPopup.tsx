@@ -11,7 +11,12 @@ const ReviewPopup = ({
   setShow: any;
 }) => {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
-  const [words, setWords] = useState<{ word: string; sentiment: string }[]>([]); // Store words with their sentiment
+  const [words, setWords] = useState<{ word: string; sentiment: string }[]>(
+    data.aspects.map((aspect:any) => ({
+      word: aspect.aspect,
+      sentiment: aspect.polarity,
+    }))
+  ); // Store words with their sentiment
 
   // Function to handle word click
   const handleWordClick = (word: string) => {

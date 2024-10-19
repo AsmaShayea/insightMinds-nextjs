@@ -100,7 +100,6 @@ const ReviewBox = ({ review }: { review: any }) => {
           id={review?.id}
           data={review}
           setShow={setShowEditPopup}
-          // show={showReplyPopup}
         />
       )}
     </div>
