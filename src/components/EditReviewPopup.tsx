@@ -23,7 +23,7 @@ const EditReviewPopup = ({
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://insights-mind-7646dfe71e1b.herokuapp.com/get-reply/${id}`
+        `http://16.171.196.223:8000/get-reply/${id}`
       );
       const result = await response.data;
 
