@@ -14,6 +14,8 @@ import ReviewPopup from "./ReviewPopup";
 const ReviewBox = ({ review }: { review: any }) => {
   const [showReplyPopup, setShowReplyPopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
+
+  // console.log(review);
   return (
     <div className="bg-white shadow-sidebar p-[16px] rounded-[16px] gap-[10px] flex flex-col ">
       <div className="flex gap-[20px] w-full">
@@ -81,7 +83,7 @@ const ReviewBox = ({ review }: { review: any }) => {
         >
           <ArrowUturnLeftIcon className="w-[20px] h-[20px] text-black" />
           <span className="text-[14px] leading-[19px] text-black">
-            رد علي التعليق
+            {review?.owner_reply ? "يحرر" : " رد علي التعليق"}
           </span>
         </div>
       </div>

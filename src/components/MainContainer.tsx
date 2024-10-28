@@ -10,13 +10,14 @@ import {
   QueueListIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaPlus } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Logo } from "./Icons";
 import { useGlobalContext } from "@/context/GlobalContext";
+import { GoPlus } from "react-icons/go";
 
 const options = [
   {
@@ -78,11 +79,10 @@ const MainContainer = ({
   const [activeOpt, setActiveOpt] = useState(["1"]);
   const [startDate, setStartDate] = useState<Date>(null);
   const [endDate, setEndDate] = useState<Date>(null);
-
+  const { setShowCreate } = useGlobalContext();
 
   return (
     <>
-    
       <div className="bg-white shadow-sidebar relative z-[10]  p-[24px] px-[20px] lg:p-[48px] lg:pb-[32px] flex flex-col gap-[16px] lg:gap-[24px] w-full ">
         <div className="w-full lg:hidden bg-lightGray h-[1px]" />
 
@@ -115,7 +115,7 @@ const MainContainer = ({
             ))}
           </div>
           <div className="flex items-center gap-[10px] md:gap-[16px]">
-            <div className="relative hidden lg:flex items-center  justify-between border hover:border-green transition-all duration-300 ease-in-out text-[14px] leading-[19px] font-[500] text-black border-lightGray bg-white px-[16px] py-[8px] rounded-[8px]  w-full gap-[14px] max-w-[250px] ">
+            {/* <div className="relative hidden lg:flex items-center  justify-between border hover:border-green transition-all duration-300 ease-in-out text-[14px] leading-[19px] font-[500] text-black border-lightGray bg-white px-[16px] py-[8px] rounded-[8px]  w-full gap-[14px] max-w-[250px] ">
               <DatePicker
                 selected={startDate}
                 onChange={(dates: [Date | null, Date | null]) => {
@@ -148,6 +148,13 @@ const MainContainer = ({
                 تصدير
               </span>
               <ArrowTopRightOnSquareIcon className="h-[22px] w-[22px] text-black" />
+            </div> */}
+            <div
+              onClick={() => setShowCreate(true)}
+              className="border border-[#29292E] cursor-pointer text-[14px] font-[500] text-[#29292E] py-[8px] px-[16px] rounded-[8px] flex items-center gap-[8px] h-[36px]"
+            >
+              <GoPlus className="text-[20px]" />
+              <span>إضافة حساب</span>
             </div>
           </div>
         </div>

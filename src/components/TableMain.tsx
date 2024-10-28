@@ -19,7 +19,7 @@ const TableMain = ({ data, type }: { data: any; type: string }) => {
               key={d}
               className={`text-[14px] ${
                 index === data?.length - 1 ? "" : "border-l"
-              } leading-[19px] line-clamp-1 font-[400] text-black flex items-center justify-center text-center border-lightGray border-b py-[12px] px-[16px] h-[42px]`}
+              } leading-[19px] line-clamp-1 font-[400] text-black flex overflow-auto custom_scroll text-center border-lightGray border-b py-[12px] px-[16px] h-[42px]`}
             >
               {d}
             </div>

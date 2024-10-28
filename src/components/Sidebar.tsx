@@ -23,7 +23,7 @@ const links = [
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
-  const { showSideM, toggleSidebar } = useGlobalContext();
+  const { showSideM, toggleSidebar, setShowCreate } = useGlobalContext();
 
   return (
     <>
@@ -31,7 +31,7 @@ const Sidebar = () => {
         className={`bg-black/60 ${
           showSideM ? "right-0 left-0 top-0 bottom-0" : "right-[-100%]"
         }  overflow-hidden fixed lg:hidden h-full w-full z-[1009] `}
-        onClick={()=> toggleSidebar()}
+        onClick={() => toggleSidebar()}
       ></div>
 
       <div
@@ -110,7 +110,10 @@ const Sidebar = () => {
                 <div className="text-gray text-[14px] leading-[18px] font-[400]">
                   المواضيع
                 </div>
-                <div className="flex gap-[8px]  items-center hover:text-main transition-all duration-300 ease-in-out text-black cursor-pointer">
+                <div
+                  onClick={() => setShowCreate(true)}
+                  className="flex gap-[8px]  items-center hover:text-main transition-all duration-300 ease-in-out text-black cursor-pointer"
+                >
                   <PlusIcon className="h-[16px] w-[16px] " />
                   <span className="text-[14px] leading-[17px] font-[400]">
                     إضافة

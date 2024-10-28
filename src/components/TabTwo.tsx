@@ -13,7 +13,7 @@ const TabTwo = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://16.171.196.223:8000/get-last-insight"
+          "http://16.171.196.223:8000/generate-text-insights/66eb726e1b898c92f06c243f"
         );
         const result = await response.data;
 
@@ -51,9 +51,10 @@ const TabTwo = () => {
           <h3 className="text-[20px] text-black leading-[27px] font-medium">
             1: ملخص المراجعة{" "}
           </h3>{" "}
-          <div className="text-black text-[16px] leading-[28px] font-normal">
-            {data?.summary}
-          </div>
+          <div
+            dangerouslySetInnerHTML={{ __html: data?.data?.summary }}
+            className="text-black text-[16px] leading-[28px] font-normal"
+          ></div>
         </li>
         <li
           className="flex flex-col bg-white gap-[8px] p-[24px] rounded-[16px]"
@@ -62,9 +63,10 @@ const TabTwo = () => {
           <h3 className="text-[20px] text-black leading-[27px] font-medium">
             2: اتجاهات تغذية العملاء{" "}
           </h3>{" "}
-          <div className="text-black text-[16px] leading-[28px] font-normal">
-            {data?.recommendations}
-          </div>
+          <div
+            dangerouslySetInnerHTML={{ __html: data?.data?.recommendations }}
+            className="text-black text-[16px] leading-[28px] font-normal"
+          ></div>
         </li>
         <li
           className="flex flex-col bg-white gap-[8px] p-[24px] rounded-[16px]"
@@ -73,9 +75,10 @@ const TabTwo = () => {
           <h3 className="text-[20px] text-black leading-[27px] font-medium">
             3: معدل الاستجابة{" "}
           </h3>{" "}
-          <div className="text-black text-[16px] leading-[28px] font-normal">
-            {data?.ideas}
-          </div>
+          <div
+            dangerouslySetInnerHTML={{ __html: data?.data?.ideas }}
+            className="text-black text-[16px] leading-[28px] font-normal"
+          ></div>
         </li>
       </ul>
     </div>

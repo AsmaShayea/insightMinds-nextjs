@@ -18,6 +18,7 @@ const EditReviewPopup = ({
 }) => {
   const [reply, setReply] = useState();
   const [loading, setLoading] = useState(true);
+  const [replyText, setReplyText] = useState(data?.owner_reply || "");
 
   const fetchData = async () => {
     try {
@@ -28,6 +29,7 @@ const EditReviewPopup = ({
       const result = await response.data;
 
       setReply(result);
+      setReplyText(reply?.reply);
 
       console.log(reply, "responsed reply");
     } catch (error) {
@@ -84,11 +86,12 @@ const EditReviewPopup = ({
             </label>
             <textarea
               placeholder="اكتب الرد هنا"
-              value={reply?.reply}
-              className="bg-white border outline-none w-full border-lightGray p-[16px] rounded-[16px] "
+              value={replyText}
+              onChange={(e) => setReplyText(e.target.value)}
+              className="bg-white border outline-none w-full custom_scroll  border-lightGray p-[16px] rounded-[16px] "
             ></textarea>
           </div>
-          <div className="flex">
+          <div className="flex flex-wrap items-center justify-between gap-[10px]">
             <div
               onClick={() => fetchData()}
               className="bg-[#F4E8FF] hover:border-[#debbff] border border-transparent px-[16px] cursor-pointer py-[12px] gap-[8px] flex items-center rounded-[24px]"
@@ -103,6 +106,9 @@ const EditReviewPopup = ({
               <span className="text-[15px] font-bold">
                 كتابة الرد بواسطة الذكاء الاصطناعي
               </span>
+            </div>
+            <div className="bg-[#EFEFF0] hover:border-[#dbdbdb] text-[14px] leading-[19px] font-[500] border border-transparent px-[16px] cursor-pointer py-[18px] gap-[8px] flex items-center rounded-[48px]">
+              تصحيح النص
             </div>
           </div>
           <div className="w-full bg-lightGray h-[1px]" />
