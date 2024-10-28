@@ -8,8 +8,8 @@ import {
   ArrowUturnLeftIcon,
   PencilSquareIcon,
 } from "@heroicons/react/24/outline";
-import EditReviewPopup from "./EditReviewPopup";
-import ReviewPopup from "./ReviewPopup";
+import EditReviewPopup from "./Popups/EditReviewPopup";
+import ReviewPopup from "./Popups/ReviewPopup";
 
 const ReviewBox = ({ review }: { review: any }) => {
   const [showReplyPopup, setShowReplyPopup] = useState(false);

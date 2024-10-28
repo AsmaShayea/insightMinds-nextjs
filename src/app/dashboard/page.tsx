@@ -4,7 +4,7 @@ import BarChart from "@/components/Charts/BarChart";
 import Donut from "@/components/Charts/Donut";
 import LineChart from "@/components/Charts/LineChart";
 import PieChart from "@/components/Charts/PieChart";
-import CreatePopup from "@/components/CreatePopup";
+import CreatePopup from "@/components/Popups/CreatePopup";
 import Feelings from "@/components/Feelings";
 import GraphsData from "@/components/GraphsData";
 import Loader from "@/components/Loader";

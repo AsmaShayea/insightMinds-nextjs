@@ -1,6 +1,6 @@
 "use client";
 
-import CreatePopup from "@/components/CreatePopup";
+import CreatePopup from "@/components/Popups/CreatePopup";
 import Loader from "@/components/Loader";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { CheckCircleIcon } from "@heroicons/react/16/solid";
