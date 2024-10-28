@@ -1,32 +1,9 @@
-"use client";
-
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const TabTwo = () => {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          "http://16.171.196.223:8000/generate-text-insights/66eb726e1b898c92f06c243f"
-        );
-        const result = await response.data;
-
-        setData(result?.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+const TabTwo = ({ data }: { data: any }) => {
+  // const [data, setData] = useState();
+  // const [loading, setLoading] = useState(true);
 
   return (
     <div className="w-full flex flex-col gap-[16px] p-[20px] lg:p-[48px]">
@@ -52,7 +29,7 @@ const TabTwo = () => {
             1: ملخص المراجعة{" "}
           </h3>{" "}
           <div
-            dangerouslySetInnerHTML={{ __html: data?.data?.summary }}
+            dangerouslySetInnerHTML={{ __html: data?.summary }}
             className="text-black text-[16px] leading-[28px] font-normal"
           ></div>
         </li>
@@ -64,7 +41,7 @@ const TabTwo = () => {
             2: اتجاهات تغذية العملاء{" "}
           </h3>{" "}
           <div
-            dangerouslySetInnerHTML={{ __html: data?.data?.recommendations }}
+            dangerouslySetInnerHTML={{ __html: data?.recommendations }}
             className="text-black text-[16px] leading-[28px] font-normal"
           ></div>
         </li>
@@ -76,7 +53,7 @@ const TabTwo = () => {
             3: معدل الاستجابة{" "}
           </h3>{" "}
           <div
-            dangerouslySetInnerHTML={{ __html: data?.data?.ideas }}
+            dangerouslySetInnerHTML={{ __html: data?.ideas }}
             className="text-black text-[16px] leading-[28px] font-normal"
           ></div>
         </li>

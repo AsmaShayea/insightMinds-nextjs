@@ -17,7 +17,7 @@ const EditReviewPopup = ({
   setShow: any;
 }) => {
   const [reply, setReply] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [replyText, setReplyText] = useState(data?.owner_reply || "");
 
   const fetchData = async () => {
@@ -96,16 +96,31 @@ const EditReviewPopup = ({
               onClick={() => fetchData()}
               className="bg-[#F4E8FF] hover:border-[#debbff] border border-transparent px-[16px] cursor-pointer py-[12px] gap-[8px] flex items-center rounded-[24px]"
             >
-              <Image
-                src={"/brain.svg"}
-                alt=""
-                width={100}
-                height={100}
-                className="w-[22px] object-cover"
-              />
-              <span className="text-[15px] font-bold">
-                كتابة الرد بواسطة الذكاء الاصطناعي
-              </span>
+              {loading ? (
+                <>
+                  {" "}
+                  <Image
+                    src={"/loader.gif"}
+                    alt=""
+                    width={100}
+                    height={100}
+                    className="w-[73px] h-[25px] object-cover"
+                  />
+                </>
+              ) : (
+                <>
+                  <Image
+                    src={"/brain.svg"}
+                    alt=""
+                    width={100}
+                    height={100}
+                    className="w-[22px] object-cover"
+                  />
+                  <span className="text-[15px] font-bold">
+                    كتابة الرد بواسطة الذكاء الاصطناعي
+                  </span>
+                </>
+              )}
             </div>
             <div className="bg-[#EFEFF0] hover:border-[#dbdbdb] text-[14px] leading-[19px] font-[500] border border-transparent px-[16px] cursor-pointer py-[18px] gap-[8px] flex items-center rounded-[48px]">
               تصحيح النص

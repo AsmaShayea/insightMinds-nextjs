@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import ReviewBox from "./ReviewBox";
 
 const tabs = [
@@ -21,7 +21,22 @@ const tabs = [
 const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
   const [activeTab, setActiveTab] = useState("Positive");
 
-  console.log(data);
+  // Memoize the reviews based on the active tab
+  const reviewsToDisplay = useMemo(() => {
+    if (loading) return [];
+    switch (activeTab) {
+      case "Positive":
+        return data?.positive_reviews || [];
+      case "Negative":
+        return data?.negative_reviews || [];
+      case "Neutral":
+        return data?.neutral_reviews || [];
+      default:
+        return [];
+    }
+  }, [activeTab, data, loading]);
+
+  // console.log(data);
 
   return (
     <div className="flex flex-col gap-[16px] w-full lg:w-[42%]">
@@ -47,22 +62,14 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
       </div>
       <div className="flex flex-col gap-[16px] lg:max-h-[900px] lg:overflow-y-auto custom_scroll">
         {loading ? (
-          <div>Laoding reviews</div>
+          <div>Loading reviews...</div>
         ) : (
-          <>
-            {activeTab === "Positive" &&
-              data?.positive_reviews?.map((review: any, index: number) => (
-                <ReviewBox key={"positive"} review={review} key={index} />
-              ))}
-            {activeTab === "Negative" &&
-              data?.negative_reviews?.map((review: any, index: number) => (
-                <ReviewBox key={"negative"} review={review} key={index} />
-              ))}
-            {activeTab === "Neutral" &&
-              data?.neutral_reviews?.map((review: any, index: number) => (
-                <ReviewBox key={"neutral"} review={review} key={index} />
-              ))}
-          </>
+          reviewsToDisplay.map((review: any) => (
+            <ReviewBox
+              key={`${review?.id}-${activeTab.toLowerCase()}`}
+              review={review}
+            />
+          ))
         )}
       </div>
     </div>

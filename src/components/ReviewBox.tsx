@@ -15,7 +15,6 @@ const ReviewBox = ({ review }: { review: any }) => {
   const [showReplyPopup, setShowReplyPopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
 
-  // console.log(review);
   return (
     <div className="bg-white shadow-sidebar p-[16px] rounded-[16px] gap-[10px] flex flex-col ">
       <div className="flex gap-[20px] w-full">
@@ -89,7 +88,7 @@ const ReviewBox = ({ review }: { review: any }) => {
       </div>
       {showReplyPopup && (
         <EditReviewPopup
-          key={review?.id}
+          key={`reviewEdit-${review?.id}`}
           id={review?.id}
           data={review}
           setShow={setShowReplyPopup}

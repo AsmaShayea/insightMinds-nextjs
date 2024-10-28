@@ -115,7 +115,35 @@ const MainContainer = ({
             ))}
           </div>
           <div className="flex items-center gap-[10px] md:gap-[16px]">
-            {/* <div className="relative hidden lg:flex items-center  justify-between border hover:border-green transition-all duration-300 ease-in-out text-[14px] leading-[19px] font-[500] text-black border-lightGray bg-white px-[16px] py-[8px] rounded-[8px]  w-full gap-[14px] max-w-[250px] ">
+            <div
+              onClick={() => setShowCreate(true)}
+              className="border border-[#29292E] cursor-pointer text-[14px] font-[500] text-[#29292E] py-[8px] px-[16px] rounded-[8px] flex items-center gap-[8px] h-[36px]"
+            >
+              <GoPlus className="text-[20px]" />
+              <span>إضافة حساب</span>
+            </div>
+          </div>
+        </div>
+        <div className="w-full bg-lightGray h-[1px] mb-[-8px]" />
+        <div className="flex items-center justify-between gap-[20px] flex-wrap">
+          <div className="flex items-center gap-[16px]">
+            {tabs.map((t, index) => (
+              <div
+                key={index}
+                onClick={() => setActiveTab(t.id)}
+                className={`h-[44px] flex items-center cursor-pointer hover:border-main border   transition-all duration-300 ease-in-out gap-[8px]  text-[16px] leading-[21px] rounded-[16px] py-[8px] px-[16px] ${
+                  t.id == activeTab
+                    ? "bg-main  text-white border-main"
+                    : "bg-bgClr text-black border-transparent hover:bg-[#ECECFE]"
+                }`}
+              >
+                {t.icon}
+                <span>{t.name}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-[16px]">
+            <div className="relative hidden lg:flex items-center  justify-between border hover:border-green transition-all duration-300 ease-in-out text-[14px] leading-[19px] font-[500] text-black border-lightGray bg-white px-[16px] py-[8px] rounded-[8px]  w-full gap-[14px] max-w-[250px] ">
               <DatePicker
                 selected={startDate}
                 onChange={(dates: [Date | null, Date | null]) => {
@@ -148,32 +176,8 @@ const MainContainer = ({
                 تصدير
               </span>
               <ArrowTopRightOnSquareIcon className="h-[22px] w-[22px] text-black" />
-            </div> */}
-            <div
-              onClick={() => setShowCreate(true)}
-              className="border border-[#29292E] cursor-pointer text-[14px] font-[500] text-[#29292E] py-[8px] px-[16px] rounded-[8px] flex items-center gap-[8px] h-[36px]"
-            >
-              <GoPlus className="text-[20px]" />
-              <span>إضافة حساب</span>
             </div>
           </div>
-        </div>
-        <div className="w-full bg-lightGray h-[1px] mb-[-8px]" />
-        <div className="flex items-center gap-[16px]">
-          {tabs.map((t, index) => (
-            <div
-              key={index}
-              onClick={() => setActiveTab(t.id)}
-              className={`h-[44px] flex items-center cursor-pointer hover:border-main border   transition-all duration-300 ease-in-out gap-[8px]  text-[16px] leading-[21px] rounded-[16px] py-[8px] px-[16px] ${
-                t.id == activeTab
-                  ? "bg-main  text-white border-main"
-                  : "bg-bgClr text-black border-transparent hover:bg-[#ECECFE]"
-              }`}
-            >
-              {t.icon}
-              <span>{t.name}</span>
-            </div>
-          ))}
         </div>
       </div>
       {activeTab == "1" && (

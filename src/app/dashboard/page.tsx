@@ -15,12 +15,15 @@ import Table from "@/components/Table";
 import TabTwo from "@/components/TabTwo";
 import { useGlobalContext } from "@/context/GlobalContext";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { FiRefreshCcw } from "react-icons/fi";
 
 const Dashboard = () => {
   const [reviews, setReviews] = useState();
   const [loading, setLoading] = useState(true);
+  const [loadingReviews, setLoadingReviews] = useState(true);
+  const [loadingTabTwo, setLoadingTabTwo] = useState(true);
+  const [tabTwoData, setTabTwoData] = useState(true);
 
   const [graphsData, setGraphsData] = useState();
   const [activeTab, setActiveTab] = useState("1");
@@ -30,7 +33,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
+        setLoadingReviews(true);
         const response = await axios.get(
           "http://16.171.196.223:8000/reviews/66eb726e1b898c92f06c243f"
         );
@@ -38,11 +41,13 @@ const Dashboard = () => {
 
         setReviews(result?.data);
 
-        console.log(result, "responsed");
+        // console.log(result, "responsed");
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        // setTimeout(() => {
+        setLoadingReviews(false);
+        // }, 6000);
       }
     };
 
@@ -60,11 +65,32 @@ const Dashboard = () => {
 
         setGraphsData(result?.data);
 
-        console.log(graphsData, "responsed");
+        // console.log(graphsData, "responsed");
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoadingTabTwo(true);
+        const response = await axios.get(
+          "http://16.171.196.223:8000/generate-text-insights/66eb726e1b898c92f06c243f"
+        );
+        const result = await response.data;
+
+        setTabTwoData(result?.data);
+        // console.log(result, result.data,"responses from tab two")
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoadingTabTwo(false);
       }
     };
 
@@ -82,9 +108,8 @@ const Dashboard = () => {
         mobTab={mobActiveTab}
         setMobTab={setMobActiveTab}
       />
-
       <div className="relative h-full">
-        {loading ? (
+        {loading && loadingReviews && loadingTabTwo ? (
           <Loader />
         ) : (
           <>
@@ -93,12 +118,12 @@ const Dashboard = () => {
                 <>
                   <Refresh />
                   <div className="flex p-[20px] lg:p-[48px] lg:flex-row flex-col w-full">
-                    <Reviews data={reviews} loading={loading} />
+                    <Reviews data={reviews} loading={loadingReviews} />
                     <GraphsData data={graphsData} />
                   </div>
                 </>
               )}
-              {activeTab == "2" && <TabTwo />}
+              {activeTab == "2" && <TabTwo data={tabTwoData} />}
             </div>
 
             <div className="lg:hidden block">
@@ -107,7 +132,7 @@ const Dashboard = () => {
                   <Refresh />
                   <div className="flex p-[20px] lg:p-[48px] gap-[20px] flex-col w-full">
                     {mobActiveTab == "c3" && (
-                      <Reviews data={reviews} loading={loading} />
+                      <Reviews data={reviews} loading={loadingReviews} />
                     )}
                     {mobActiveTab == "a1" && (
                       <>
@@ -129,7 +154,7 @@ const Dashboard = () => {
                 </>
               )}
 
-              {activeTab == "2" && <TabTwo />}
+              {activeTab == "2" && <TabTwo data={tabTwoData} />}
             </div>
           </>
         )}
