@@ -109,7 +109,7 @@ const Dashboard = () => {
         setMobTab={setMobActiveTab}
       />
       <div className="relative h-full">
-        {loading && loadingReviews && loadingTabTwo ? (
+        {loading || loadingReviews || loadingTabTwo ? (
           <Loader />
         ) : (
           <>
@@ -118,7 +118,7 @@ const Dashboard = () => {
                 <>
                   <Refresh />
                   <div className="flex p-[20px] lg:p-[48px] lg:flex-row flex-col w-full">
-                    <Reviews data={reviews} loading={loadingReviews} />
+                    <Reviews key={"desktop-reviews"} data={reviews} loading={loadingReviews} />
                     <GraphsData data={graphsData} />
                   </div>
                 </>
@@ -132,7 +132,7 @@ const Dashboard = () => {
                   <Refresh />
                   <div className="flex p-[20px] lg:p-[48px] gap-[20px] flex-col w-full">
                     {mobActiveTab == "c3" && (
-                      <Reviews data={reviews} loading={loadingReviews} />
+                      <Reviews key={"mobile-reviews"} data={reviews} loading={loadingReviews} />
                     )}
                     {mobActiveTab == "a1" && (
                       <>

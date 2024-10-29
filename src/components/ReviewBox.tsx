@@ -16,7 +16,7 @@ const ReviewBox = ({ review }: { review: any }) => {
   const [showEditPopup, setShowEditPopup] = useState(false);
 
   return (
-    <div className="bg-white shadow-sidebar p-[16px] rounded-[16px] gap-[10px] flex flex-col ">
+    <div key={`${review?.id}-reviewbox`} className="bg-white shadow-sidebar p-[16px] rounded-[16px] gap-[10px] flex flex-col ">
       <div className="flex gap-[20px] w-full">
         <div className="w-[50px] h-[50px] flex-shrink-0 rounded-full aspect-[1] overflow-hidden">
           <Image
@@ -35,9 +35,9 @@ const ReviewBox = ({ review }: { review: any }) => {
             <div className="flex items-center gap-[2px]">
               {Array(review.rating)
                 .fill(1)
-                .map((st) => (
+                .map((st,i) => (
                   <StarIcon
-                    key={st}
+                    key={`${i}-${st}`}
                     className="h-[20px] w-[20px] text-[#FFCF09]"
                   />
                 ))}

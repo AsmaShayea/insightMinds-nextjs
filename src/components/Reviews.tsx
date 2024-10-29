@@ -39,7 +39,7 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
   // console.log(data);
 
   return (
-    <div className="flex flex-col gap-[16px] w-full lg:w-[42%]">
+    <div  className="flex flex-col gap-[16px] w-full lg:w-[42%]">
       <div className="flex flex-col gap-[16px]">
         <h2 className="text-[16px] leading-[21px] font-[600] text-black">
           اراء العملاء
@@ -64,9 +64,9 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
         {loading ? (
           <div>Loading reviews...</div>
         ) : (
-          reviewsToDisplay.map((review: any) => (
+          reviewsToDisplay.map((review: any,index:number) => (
             <ReviewBox
-              key={`${review?.id}-${activeTab.toLowerCase()}`}
+              key={`${review?.id}-${activeTab.toLowerCase()}-${index}`}
               review={review}
             />
           ))

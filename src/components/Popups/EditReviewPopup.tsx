@@ -29,9 +29,9 @@ const EditReviewPopup = ({
       const result = await response.data;
 
       setReply(result);
-      setReplyText(reply?.reply);
+      setReplyText(result?.reply);
 
-      console.log(reply, "responsed reply");
+      // console.log(reply, "responsed reply");
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {

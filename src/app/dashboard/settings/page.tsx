@@ -63,7 +63,7 @@ const Settings = () => {
           description: result?.description,
         });
 
-        console.log(result, "responsed");
+        console.log(result, "responsed setting");
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
