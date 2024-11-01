@@ -165,7 +165,7 @@ const MainContainer = ({
               className={`h-[44px] flex items-center cursor-pointer gap-[10px] hover:border-green transition-all duration-300 ease-in-out rounded-[16px] py-[8px] px-[16px] border-[1.5px] bg-white border-lightGray`}
             >
               <span className="text-[16px] hidden lg:inline-flex leading-[21px] font-[400] text-black">
-                مرشحات
+                فلتر
               </span>
               <AdjustmentsHorizontalIcon className="h-[22px] w-[22px] text-black" />
             </div>

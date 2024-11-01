@@ -82,7 +82,7 @@ const ReviewBox = ({ review }: { review: any }) => {
         >
           <ArrowUturnLeftIcon className="w-[20px] h-[20px] text-black" />
           <span className="text-[14px] leading-[19px] text-black">
-            {review?.owner_reply ? "يحرر" : " رد علي التعليق"}
+            {review?.owner_reply ? "تغيير التعليق" : " رد علي التعليق"}
           </span>
         </div>
       </div>

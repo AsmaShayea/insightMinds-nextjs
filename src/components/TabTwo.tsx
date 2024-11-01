@@ -26,7 +26,7 @@ const TabTwo = ({ data }: { data: any }) => {
           style={{ boxShadow: "0px 12px 64px 0px #A3B5D433" }}
         >
           <h3 className="text-[20px] text-black leading-[27px] font-medium">
-            1: ملخص المراجعة{" "}
+            {" "}
           </h3>{" "}
           <div
             dangerouslySetInnerHTML={{ __html: data?.summary }}
@@ -38,7 +38,7 @@ const TabTwo = ({ data }: { data: any }) => {
           style={{ boxShadow: "0px 12px 64px 0px #A3B5D433" }}
         >
           <h3 className="text-[20px] text-black leading-[27px] font-medium">
-            2: اتجاهات تغذية العملاء{" "}
+            {" "}
           </h3>{" "}
           <div
             dangerouslySetInnerHTML={{ __html: data?.recommendations }}
@@ -50,7 +50,7 @@ const TabTwo = ({ data }: { data: any }) => {
           style={{ boxShadow: "0px 12px 64px 0px #A3B5D433" }}
         >
           <h3 className="text-[20px] text-black leading-[27px] font-medium">
-            3: معدل الاستجابة{" "}
+            {" "}
           </h3>{" "}
           <div
             dangerouslySetInnerHTML={{ __html: data?.ideas }}

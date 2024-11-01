@@ -47,7 +47,7 @@ const Feelings = ({ data }: { data: any }) => {
   return (
     <div className="p-[16px] rounded-[16px]  gap-[16px] flex flex-col bg-white shadow-sidebar">
       <div className="text-[16px] leading-[21px] text-black font-[600]">
-        مشاعر استنادًا إلى المواضيع{" "}
+       إجمالي المشاعر حسب التصنيفات{" "}
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[16px] ">
         {data?.map((a: any, i: number) => (

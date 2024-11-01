@@ -9,7 +9,7 @@ const tabs = [
   },
   {
     id: "2",
-    name: "محايد",
+    name: "سلبي",
   },
 ];
 
@@ -34,7 +34,7 @@ const Table = ({ data }: { data: any }) => {
   return (
     <div className="p-[16px] rounded-[16px]  gap-[16px] flex flex-col bg-white shadow-sidebar">
       <div className="text-[16px] leading-[21px] text-black font-[600]">
-        اشهر المواضيع{" "}
+        أشهر المواضيع{" "}
       </div>
       <div className="flex border-b border-lightGray w-full">
       
@@ -56,7 +56,7 @@ const Table = ({ data }: { data: any }) => {
               : "border-transparent text-black"
           } text-[14px] leading-[19px] font-[500] flex items-center justify-center`}
         >
-          محايد
+          سلبي
         </div>
       </div>
       {activeTab === "p" && <TableMain data={data?.top_positive_aspects} type="positive" />}

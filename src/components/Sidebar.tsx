@@ -12,11 +12,11 @@ import { useGlobalContext } from "@/context/GlobalContext";
 
 const links = [
   {
-    name: "مطعم ضي القمر",
+    name: "مطعم بيت الروبيان",
     link: "/",
   },
   {
-    name: "كافية الفيروز",
+    name: "كافيه وكف",
     link: "/",
   },
 ];
