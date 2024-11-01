@@ -41,6 +41,24 @@ const EditReviewPopup = ({
 
   // fetchData();
 
+  const handleCorrectReply = async () =>{
+    try {
+      const rs = await axios.post(
+        'http://16.171.196.223:8000/correct-reply',
+        {
+          reply_text: replyText
+        }
+      )
+
+      setReplyText(rs?.data?.corrected_reply);
+
+
+
+    } catch (error) {
+      console.error("Error while Correcting Reply:", error);
+    }
+  }
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-center fixed z-[999] p-4 overflow-y-auto inset-0  bg-black/20">
       <div
@@ -122,9 +140,9 @@ const EditReviewPopup = ({
                 </>
               )}
             </div>
-            <div className="bg-[#EFEFF0] hover:border-[#dbdbdb] text-[14px] leading-[19px] font-[500] border border-transparent px-[16px] cursor-pointer py-[18px] gap-[8px] flex items-center rounded-[48px]">
+            <button disabled={replyText.length < 1} onClick={handleCorrectReply} className={`bg-[#EFEFF0]  text-[14px] leading-[19px] font-[500] border border-transparent px-[16px] cursor-pointer py-[18px] gap-[8px] flex items-center rounded-[48px] opacity-50 ${replyText.length > 0 && "hover:border-[#dbdbdb] !opacity-100"}`}>
               تصحيح النص
-            </div>
+            </button>
           </div>
           <div className="w-full bg-lightGray h-[1px]" />
           <div className="flex items-center justify-end gap-[16px]">

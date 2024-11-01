@@ -19,7 +19,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { FiRefreshCcw } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
-const Dashboard = () => {
+const Page = () => {
   const [reviews, setReviews] = useState();
   const [loading, setLoading] = useState(true);
   const [loadingReviews, setLoadingReviews] = useState(true);
@@ -33,22 +33,7 @@ const Dashboard = () => {
 
   const router = useRouter();
 
-  useEffect(()=>{
-    ;(async ()=>{
-      try {
-        const rs = await axios.get(
-          "http://16.171.196.223:8000/get-business-data"
-        ) 
-
-    
-         router.push(`/dashboard/${rs?.data?.data.my_business[0]?.id}`)
-
-
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    })()
-  },[])
+ 
 
 
 
@@ -185,4 +170,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Page;

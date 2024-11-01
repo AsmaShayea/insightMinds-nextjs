@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Logo, LogoS } from "./Icons";
 import {
   Cog8ToothIcon,
@@ -9,21 +9,51 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useGlobalContext } from "@/context/GlobalContext";
+import axios from "axios";
+import Image from "next/image";
 
-const links = [
-  {
-    name: "مطعم بيت الروبيان",
-    link: "/",
-  },
-  {
-    name: "كافيه وكف",
-    link: "/",
-  },
-];
+
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const { showSideM, toggleSidebar, setShowCreate } = useGlobalContext();
+
+  const [links, setLinks] = useState([
+    {
+      id:"1",
+      logo:"/",
+      name: "مطعم بيت الروبيان",
+      link: "/",
+    },
+    {
+      id:"2",
+      logo:"/",
+      name: "كافيه وكف",
+      link: "/",
+    },
+  ])
+
+
+
+  useEffect(()=>{
+    ;(async ()=>{
+      try {
+        const rs = await axios.get(
+          "http://16.171.196.223:8000/get-business-data"
+        ) 
+
+        setLinks(()=>{
+          return rs?.data?.data?.other_business
+        })
+
+
+
+    
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    })()
+  },[])
 
   return (
     <>
@@ -123,12 +153,15 @@ const Sidebar = () => {
               <div className="flex flex-col gap-[8px]">
                 {links.map((link, index) => (
                   <Link
-                    href={link.link}
+                    href={`/dashboard/${link?.id}`}
                     onClick={() => toggleSidebar()}
                     key={index}
-                    className="w-full h-[48px]  text-[14px] hover:text-main transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex items-center"
+                    className="w-full h-[48px] gap-x-2  text-[14px] hover:text-main transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex flex-row items-center"
                   >
-                    {link.name}
+                    <span className="order-2">
+                      {link?.name}
+                      </span>
+                      <Image src={link?.logo.replace('"','')} alt="Insights-Minds" height={500} width={500} className="size-10 order-1"/>
                   </Link>
                 ))}
               </div>
