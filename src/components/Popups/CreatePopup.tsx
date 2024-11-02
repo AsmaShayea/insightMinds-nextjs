@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { CheckCircleIcon } from "@heroicons/react/16/solid";
 import DatePicker from "react-datepicker";
 import { CalendarDaysIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const options = [
   {
@@ -21,10 +23,34 @@ const options = [
   },
 ];
 
+
 const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
+
   const [activeOpt, setActiveOpt] = useState(["1"]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDatet, setSelectedDatet] = useState(null);
+
+  const router = useRouter();
+
+
+
+  const handleFetchBusinessId = async (e:any)=>{
+    e.preventDefault(); 
+
+    const form = e.target; 
+    const urlValue = form.elements["type"].value; 
+    
+    try {
+      const rs = await axios.post("http://16.171.196.223:8000/scrape-extract-aspects",{
+        url: urlValue,
+      })
+      console.log("Business id",rs?.data?.business_id);
+      setShow(false)
+      router.push(`/dashboard/${rs?.data?.business_id}`)
+    } catch (error) {
+      console.error("Error while fetching business id : ", error)
+    }
+  }
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center fixed z-[9999] p-4 overflow-y-auto inset-0  bg-black/20">
@@ -35,7 +61,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
         <h4 className="text-[20px] leading-[24px] text-[#29292E] font-[600] ">
           موضوع جديد
         </h4>
-        <div className="flex flex-col gap-[16px] w-full">
+        <form onSubmit={handleFetchBusinessId} className="flex flex-col gap-[16px] w-full">
           <div className="flex flex-col gap-[8px] text-[14px] leading-[19px] text-black font-[500]">
             <label htmlFor="" className="">
               نوع
@@ -73,6 +99,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
               الرابط{" "}
             </label>
             <input
+            id="type"
               // onChange={handleChange}
               type="text"
               // value={formData.type}
@@ -121,11 +148,11 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
             >
               الغاء
             </button>
-            <button className="text-[14px] leading-[19px] text-white rounded-[48px] px-[16px] py-[8px] bg-[#5A60F6] font-medium">
+            <button type="submit" className="text-[14px] leading-[19px] text-white rounded-[48px] px-[16px] py-[8px] bg-[#5A60F6] font-medium">
               رد علي التعليق
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

@@ -39,9 +39,8 @@ const Dashboard = () => {
         const rs = await axios.get(
           "http://16.171.196.223:8000/get-business-data"
         ) 
-
-    
-         router.push(`/dashboard/${rs?.data?.data.my_business[0]?.id}`)
+        
+         router.push(`/dashboard/${rs?.data?.data.my_business[0]?.id}?myBusiness=true&progressStatus=${encodeURI(rs?.data?.data.my_business[0]?.progress_status == "completed" ? "completed" : "incomplete" )}`)
 
 
       } catch (error) {

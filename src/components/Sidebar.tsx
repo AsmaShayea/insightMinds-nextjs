@@ -24,12 +24,16 @@ const Sidebar = () => {
       logo:"/",
       name: "مطعم بيت الروبيان",
       link: "/",
+      is_my_business : "false",
+      progress_status: "incomplete"
     },
     {
       id:"2",
       logo:"/",
       name: "كافيه وكف",
       link: "/",
+        is_my_business : "false",
+        progress_status: "incomplete"
     },
   ])
 
@@ -41,6 +45,8 @@ const Sidebar = () => {
         const rs = await axios.get(
           "http://16.171.196.223:8000/get-business-data"
         ) 
+
+        console.log("DATA",rs?.data?.data)
 
         setLinks(()=>{
           return rs?.data?.data?.other_business
@@ -153,7 +159,11 @@ const Sidebar = () => {
               <div className="flex flex-col gap-[8px]">
                 {links.map((link, index) => (
                   <Link
-                    href={`/dashboard/${link?.id}`}
+                
+                    href={{
+                      pathname: `/dashboard/${link?.id}`,
+                      query: { myBusiness: link?.is_my_business ? "true" : "false", progressStatus : link?.progress_status == "completed" ? "completed" : "incomplete" },
+                    }}
                     onClick={() => toggleSidebar()}
                     key={index}
                     className="w-full h-[48px] gap-x-2  text-[14px] hover:text-main transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex flex-row items-center"
@@ -173,6 +183,7 @@ const Sidebar = () => {
             />
             <Link
               href={"/dashboard/settings"}
+              
               onClick={() => toggleSidebar()}
               className={`px-[16px] py-[8px] hover:text-main transition-all duration-300 ease-in-out  flex gap-[8px] items-center ${
                 !showSidebar && "justify-center"
