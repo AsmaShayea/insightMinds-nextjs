@@ -35,3 +35,10 @@
 .tokenized-review span:hover {
   background-color: #c1c1c1;
 }
+.text-black{
+  height: fit-content;
+  text-align: start;
+}
+span{
+  line-height: initial;
+}

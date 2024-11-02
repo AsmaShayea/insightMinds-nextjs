@@ -39,33 +39,22 @@ const LineChart = ({ data }: { data: any }) => {
     return gradient;
   };
 
+  // Extract month names, positive counts, and negative counts from API data
+  const labels = data?.map((item: any) => item.month);
   const positiveCounts = data?.map((item: any) => item.positive_count);
   const negativeCounts = data?.map((item: any) => item.negative_count);
 
   const chartData = {
-    labels: [
-      "يناير",
-      "فبراير",
-      "مارس",
-      "ابريل",
-      "مايو",
-      "يونيو",
-      "يوليو",
-      "أغسطس",
-      "سبتمبر",
-      "اكتوبر",
-      "نوفمبر",
-      "ديسمبر",
-    ], // Arabic months
+    labels, // Use dynamic labels from API data
     datasets: [
       {
         label: "ايجابية",
         data: positiveCounts,
-        borderColor: "#3DDA67", // Line color
+        borderColor: "#3DDA67",
         borderWidth: 2,
-        pointRadius: 0, // Hide the points
-        pointHoverRadius: 5, // Show points on hover
-        fill: true, // Enable gradient fill
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        fill: true,
         backgroundColor: chartRef.current
           ? createGradient(
               chartRef.current.ctx,
@@ -73,16 +62,16 @@ const LineChart = ({ data }: { data: any }) => {
               "#3DDA67",
               "rgba(255, 99, 132, 0)"
             )
-          : "#3DDA67", // Fallback color
+          : "#3DDA67",
       },
       {
         label: "سلبية",
         data: negativeCounts,
-        borderColor: "#FA2057", // Line color
+        borderColor: "#FA2057",
         borderWidth: 2,
-        pointRadius: 0, // Hide the points
-        pointHoverRadius: 5, // Show points on hover
-        fill: true, // Enable gradient fill
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        fill: true,
         backgroundColor: chartRef.current
           ? createGradient(
               chartRef.current.ctx,
@@ -90,7 +79,7 @@ const LineChart = ({ data }: { data: any }) => {
               "#FA2057",
               "rgba(75, 192, 192, 0)"
             )
-          : "#FA2057", // Fallback color
+          : "#FA2057",
       },
     ],
   };
@@ -102,32 +91,32 @@ const LineChart = ({ data }: { data: any }) => {
       x: {
         display: true,
         grid: {
-          display: false, // Hide x-axis grid lines
+          display: false,
         },
         ticks: {
           font: {
-            size: 14, // Set x-axis label font size
+            size: 14,
           },
-          color: "#000", // Set label color if needed
+          color: "#000",
         },
       },
       y: {
         display: true,
-        position: "right", // Move y-axis to the right side for Arabic style
+        position: "right",
         grid: {
-          display: false, // Hide y-axis grid lines
+          display: false,
         },
         ticks: {
           font: {
-            size: 14, // Set y-axis label font size
+            size: 14,
           },
-          color: "#000", // Set label color if needed
+          color: "#000",
         },
       },
     },
     plugins: {
       legend: {
-        display: false, // Hide legend if not needed
+        display: false,
       },
       tooltip: {
         enabled: true,
@@ -135,12 +124,11 @@ const LineChart = ({ data }: { data: any }) => {
     },
     elements: {
       line: {
-        tension: 0.4, // Smooth the lines
+        tension: 0.4,
       },
     },
   };
 
-  // Only apply gradient after the chart is rendered
   useEffect(() => {
     const chart = chartRef.current;
 
@@ -149,7 +137,6 @@ const LineChart = ({ data }: { data: any }) => {
       const chartArea = chart.chartArea;
 
       if (chartArea) {
-        // Set gradient for Dataset 1
         const gradient1 = createGradient(
           ctx,
           chartArea,
@@ -158,7 +145,6 @@ const LineChart = ({ data }: { data: any }) => {
         );
         chart.data.datasets[0].backgroundColor = gradient1;
 
-        // Set gradient for Dataset 2
         const gradient2 = createGradient(
           ctx,
           chartArea,
@@ -167,17 +153,12 @@ const LineChart = ({ data }: { data: any }) => {
         );
         chart.data.datasets[1].backgroundColor = gradient2;
 
-        chart.update(); // Update the chart with new gradients
+        chart.update();
       }
     }
-  }, []);
+  }, [data]);
 
   return (
-    // <div className="w-full h-full">
-    //   {" "}
-    //   {/* Light green background */}
-    //   <Line ref={chartRef} data={chartData} options={options} />
-    // </div>
     <div className="bg-white shadow-sidebar h-[250px] w-full p-[16px] rounded-[16px] flex flex-col justify-between gap-[16px]">
       <div className="flex items-center justify-between gap-[10px]">
         <div className="text-[16px] leading-[21px] text-black font-[600]">
@@ -207,3 +188,4 @@ const LineChart = ({ data }: { data: any }) => {
 };
 
 export default LineChart;
+
