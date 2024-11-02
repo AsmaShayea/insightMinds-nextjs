@@ -22,7 +22,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import progressPageIcon from "@/assets/images/icons/progress-page-icon.svg";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const Page = ({ params }: { params: Promise<{ id: string }> }) => {
@@ -42,6 +42,10 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
   const [progressStatus, setProgressStatus] = useState<string | null>(null);
 
   const searchParams = useSearchParams();
+
+  const router = useRouter();
+
+  const queryClient = useQueryClient();
 
   const fetchReviews = async () => {
     const response = await axios.get(
@@ -74,7 +78,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
   const { data: progressData } = useQuery({
     queryKey: ["progressStatus"],
     queryFn: fetchProgressStatus,
-    refetchInterval: progressStatus !== "completed" ? 20000 : false,
+    refetchInterval: progressStatus !== "completed" ? 5000 : false,
     enabled: progressStatus !== "completed" && id != null,
   });
 
@@ -127,8 +131,11 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
 
 
   useEffect(() => {
-    if (progressData?.progress_percentage === 100) {
+    if (progressData?.progress_percentage === 100 && progressStatus == "incomplete") {
       setProgressStatus("completed");
+      router.replace(`/dashboard/${id}?progressStatus=completed`);
+      queryClient.invalidateQueries({queryKey:['fetchSidebarLinks'],refetchType:"all"});
+      router.refresh();
      
     }
   }, [progressData]);

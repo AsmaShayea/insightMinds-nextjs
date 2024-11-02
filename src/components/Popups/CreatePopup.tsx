@@ -52,7 +52,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
 
       setShow(false);
 
-      window.location.replace(`/dashboard/${rs?.data?.business_id}`)
+      window.location.replace(`/dashboard/${rs?.data?.business_id}?progressStatus=incomplete`)
  
     } catch (error) {
       console.error("Error while fetching business id : ", error);

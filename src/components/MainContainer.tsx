@@ -108,7 +108,7 @@ const MainContainer = ({
 
   
   const currentSelected = {name:"",logo:""}
-  const activeId = window.location.pathname.split("/").at(-1)
+  const activeId = window?.location?.pathname?.split("/").at(-1)
 
 
   if(isMyBusiness){

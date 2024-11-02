@@ -12,12 +12,17 @@ import { useGlobalContext } from "@/context/GlobalContext";
 import axios from "axios";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
+import { usePathname } from "next/navigation";
 
 
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const { showSideM, toggleSidebar, setShowCreate } = useGlobalContext();
+const [activeId, setactiveId] = useState("")
+
+
+const pathname = usePathname()
 
 
   const fetchLinks = async () => {
@@ -35,7 +40,14 @@ const Sidebar = () => {
     
   });
 
-   const activeId = window.location.pathname.split("/").at(-1)
+
+
+  useEffect(()=>{
+    const activeId = pathname.split("/").at(-1) as string
+    setactiveId(activeId);
+  },[pathname])
+
+
   
 
 
@@ -152,7 +164,7 @@ const Sidebar = () => {
                     <span className="order-2">
                       {link?.name}
                       </span>
-                      <Image src={link?.logo.replace('"','')} alt="Insights-Minds" height={500} width={500} className="size-10 order-1"/>
+                      <Image src={link?.logo?.replace('"','')} alt="Insights-Minds" height={500} width={500} className="size-10 order-1"/>
                   </Link>
                 ))}
               </div>
