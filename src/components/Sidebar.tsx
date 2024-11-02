@@ -19,18 +19,18 @@ const Sidebar = () => {
   const { showSideM, toggleSidebar, setShowCreate } = useGlobalContext();
 
   const [links, setLinks] = useState([
-    {
-      id:"1",
-      logo:"/",
-      name: "مطعم بيت الروبيان",
-      link: "/",
-    },
-    {
-      id:"2",
-      logo:"/",
-      name: "كافيه وكف",
-      link: "/",
-    },
+    // {
+    //   id:"1",
+    //   logo:"/",
+    //   name: "مطعم بيت الروبيان",
+    //   link: "/",
+    // },
+    // {
+    //   id:"2",
+    //   logo:"/",
+    //   name: "كافيه وكف",
+    //   link: "/",
+    // },
   ])
 
 
