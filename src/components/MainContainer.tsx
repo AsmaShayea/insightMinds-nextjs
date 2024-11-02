@@ -21,7 +21,7 @@ import { GoPlus } from "react-icons/go";
 import Image from "next/image";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const options = [
   {
@@ -89,7 +89,7 @@ const MainContainer = ({
   const [endDate, setEndDate] = useState<Date>(null);
   const { setShowCreate } = useGlobalContext();
 
-
+  const pathname = usePathname();
 
   const fetchLinks = async () => {
     const response = await axios.get(
@@ -108,7 +108,7 @@ const MainContainer = ({
 
   
   const currentSelected = {name:"",logo:""}
-  const activeId = window?.location?.pathname?.split("/").at(-1)
+  const activeId = pathname?.split("/").at(-1)
 
 
   if(isMyBusiness){
@@ -141,7 +141,7 @@ const MainContainer = ({
             height={64} // 4rem
             className="w-16 h-16 order-1 shadow-[0px_0px_6px_0px_#5a60f629]"
             style={{ color: 'transparent' }}
-            src={currentSelected?.logo}
+            src={currentSelected?.logo || "/"}
           />
         </h4>
    {isMyBusiness && <div className="flex items-center gap-[10px] md:gap-[16px]">
