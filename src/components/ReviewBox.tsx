@@ -11,9 +11,11 @@ import {
 import EditReviewPopup from "./Popups/EditReviewPopup";
 import ReviewPopup from "./Popups/ReviewPopup";
 
-const ReviewBox = ({ review,isMyBusiness }: { review: any;isMyBusiness:boolean; }) => {
+const ReviewBox = ({ review,isMyBusiness}: { review: any;isMyBusiness:string; }) => {
   const [showReplyPopup, setShowReplyPopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
+
+
 
   return (
     <div key={`${review?.id}-reviewbox`} className="bg-white shadow-sidebar p-[16px] rounded-[16px] gap-[10px] flex flex-col ">
@@ -68,7 +70,7 @@ const ReviewBox = ({ review,isMyBusiness }: { review: any;isMyBusiness:boolean; 
         </div>
       </div>
 
-    { isMyBusiness && (
+    { isMyBusiness == "true" && 
       <>
       <div className="w-full bg-lightGray h-[1px]" />
         <div className="flex items-start gap-[24px]">
@@ -90,7 +92,7 @@ const ReviewBox = ({ review,isMyBusiness }: { review: any;isMyBusiness:boolean; 
           </div>
         </div>
     </>
-    )}
+    }
 
       {showReplyPopup && (
         <EditReviewPopup

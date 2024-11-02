@@ -8,6 +8,7 @@ import { CalendarDaysIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useQueryClient } from "@tanstack/react-query";
 
 const options = [
   {
@@ -30,6 +31,8 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
   const [selectedDatet, setSelectedDatet] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const queryClient = useQueryClient()
+
   const router = useRouter();
 
   const handleFetchBusinessId = async (e: any) => {
@@ -46,10 +49,11 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
           url: urlValue,
         }
       );
-      console.log("Business id", rs?.data?.business_id);
 
       setShow(false);
-      router.push(`/dashboard/${rs?.data?.business_id}`);
+
+      window.location.replace(`/dashboard/${rs?.data?.business_id}`)
+ 
     } catch (error) {
       console.error("Error while fetching business id : ", error);
     } finally {

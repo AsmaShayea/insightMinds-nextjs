@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useGlobalContext } from "@/context/GlobalContext";
 import axios from "axios";
 import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
 
 
 
@@ -18,48 +19,28 @@ const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const { showSideM, toggleSidebar, setShowCreate } = useGlobalContext();
 
-  const [links, setLinks] = useState([
-    {
-      id:"1",
-      logo:"/",
-      name: "مطعم بيت الروبيان",
-      link: "/",
-      is_my_business : "false",
-      progress_status: "incomplete"
-    },
-    {
-      id:"2",
-      logo:"/",
-      name: "كافيه وكف",
-      link: "/",
-        is_my_business : "false",
-        progress_status: "incomplete"
-    },
-  ])
 
-
-
-  useEffect(()=>{
-    ;(async ()=>{
-      try {
-        const rs = await axios.get(
-          "http://16.171.196.223:8000/get-business-data"
-        ) 
-
-        console.log("DATA",rs?.data?.data)
-
-        setLinks(()=>{
-          return rs?.data?.data?.other_business
-        })
-
-
-
+  const fetchLinks = async () => {
+    const response = await axios.get(
+      "http://16.171.196.223:8000/get-business-data"
+    );
+    return response?.data?.data;
+  };
+  
+  const { data } = useQuery({
+    queryKey: ["fetchSidebarLinks"],
+    queryFn: fetchLinks,
+    staleTime:0,
+    refetchOnWindowFocus:true,
     
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    })()
-  },[])
+  });
+
+   const activeId = window.location.pathname.split("/").at(-1)
+  
+
+
+
+
 
   return (
     <>
@@ -157,7 +138,7 @@ const Sidebar = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-[8px]">
-                {links.map((link, index) => (
+              {data?.other_business?.map((link, index) => (
                   <Link
                 
                     href={{
@@ -166,7 +147,7 @@ const Sidebar = () => {
                     }}
                     onClick={() => toggleSidebar()}
                     key={index}
-                    className="w-full h-[48px] gap-x-2  text-[14px] hover:text-main transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex flex-row items-center"
+                    className={`w-full h-[48px] gap-x-2  text-[14px] hover:text-main transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex flex-row items-center ${link?.id == activeId && "bg-bgClr"}`}
                   >
                     <span className="order-2">
                       {link?.name}

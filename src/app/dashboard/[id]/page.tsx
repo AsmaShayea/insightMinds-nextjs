@@ -18,7 +18,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FiRefreshCcw } from "react-icons/fi";
 
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import progressPageIcon from "@/assets/images/icons/progress-page-icon.svg";
 import Image from "next/image";
@@ -129,7 +129,6 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
   useEffect(() => {
     if (progressData?.progress_percentage === 100) {
       setProgressStatus("completed");
-      console.log("ON SUCCESS WORKING");
      
     }
   }, [progressData]);
@@ -152,7 +151,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
         isMyBusiness={isMyBusiness}
       />
 
-      <div className={`relative size-full ${progressStatus && "p-8"} `}>
+      <div className={`relative size-full`}>
         {loadingReviews || loadingGraphs || loadingTabTwo || progressStatus == null ? (
           <Loader />
         ) : progressStatus == "incomplete" ? (

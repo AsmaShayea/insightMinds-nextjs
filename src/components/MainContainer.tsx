@@ -19,6 +19,9 @@ import { Logo } from "./Icons";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { GoPlus } from "react-icons/go";
 import Image from "next/image";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
 
 const options = [
   {
@@ -86,28 +89,62 @@ const MainContainer = ({
   const [endDate, setEndDate] = useState<Date>(null);
   const { setShowCreate } = useGlobalContext();
 
+
+
+  const fetchLinks = async () => {
+    const response = await axios.get(
+      "http://16.171.196.223:8000/get-business-data"
+    );
+    return response?.data?.data;
+  };
+  
+  const { data } = useQuery({
+    queryKey: ["fetchSidebarLinks"],
+    queryFn: fetchLinks,
+    staleTime:0,
+    refetchOnWindowFocus:true,
+    
+  });
+
+  
+  const currentSelected = {name:"",logo:""}
+  const activeId = window.location.pathname.split("/").at(-1)
+
+
+  if(isMyBusiness){
+
+    currentSelected.name = data?.my_business[0]?.name
+    currentSelected.logo = data?.my_business[0]?.logo
+  }else{
+    const currentBusiness = data?.other_business.find( (b:any) =>{ return b?.id == activeId});
+    currentSelected.name = currentBusiness?.name
+    currentSelected.logo = currentBusiness?.logo
+  }
+
+
+
   return (
     <>
       <div className="bg-white shadow-sidebar relative z-[10]  p-[24px] px-[20px] lg:p-[48px] lg:pb-[32px] flex flex-col gap-[16px] lg:gap-[24px] w-full ">
         <div className="w-full lg:hidden bg-lightGray h-[1px]" />
 
 
-{ isMyBusiness &&
+
 <>
   
     <div className="flex sm:flex-nowrap flex-wrap items-center w-full justify-between sm:h-[44px] gap-[20px] sm:gap-[50px]">
     <h4 className="w-full h-[48px] gap-x-2 text-[14px] transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex flex-row items-center">
-          <span className="order-2 text-[18px] font-bold">نمق كافيه | قهوة مختصة وأكثر</span>
+          <span className="order-2 text-[18px] font-bold">{currentSelected?.name}</span>
           <Image
             alt="Insights-Minds"
             width={64} // 4rem
             height={64} // 4rem
             className="w-16 h-16 order-1 shadow-[0px_0px_6px_0px_#5a60f629]"
             style={{ color: 'transparent' }}
-            src="https://lh4.googleusercontent.com/-kiVZ_s4HFKk/AAAAAAAAAAI/AAAAAAAAAAA/ZRXWGS6drcU/s44-p-k-no-ns-nd/photo.jpg"
+            src={currentSelected?.logo}
           />
         </h4>
-    <div className="flex items-center gap-[10px] md:gap-[16px]">
+   {isMyBusiness && <div className="flex items-center gap-[10px] md:gap-[16px]">
       {options.map((op, index) => (
         <div
           key={index}
@@ -142,13 +179,13 @@ const MainContainer = ({
               <span>إضافة</span>
             </div>
             </div>
-    </div>
+    </div>}
 
             </div>
           <div className="w-full bg-lightGray h-[1px] mb-[-8px]" />
 </>
           
-}
+
 
 
 

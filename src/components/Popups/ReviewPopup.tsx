@@ -46,7 +46,6 @@ const ReviewPopup = ({
       const span = event.target as HTMLElement;
       if (span.tagName === "SPAN") {
         handleWordClick(span.textContent || "");
-        console.log("clicked", span);
       }
     };
 
