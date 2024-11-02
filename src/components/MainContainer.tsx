@@ -95,7 +95,18 @@ const MainContainer = ({
 { isMyBusiness &&
 <>
   
-          <div className="flex sm:flex-nowrap flex-wrap items-center w-full justify-between sm:h-[44px] gap-[20px] sm:gap-[50px]">
+    <div className="flex sm:flex-nowrap flex-wrap items-center w-full justify-between sm:h-[44px] gap-[20px] sm:gap-[50px]">
+    <h4 className="w-full h-[48px] gap-x-2 text-[14px] transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex flex-row items-center">
+          <span className="order-2 text-[18px] font-bold">نمق كافيه | قهوة مختصة وأكثر</span>
+          <Image
+            alt="Insights-Minds"
+            width={64} // 4rem
+            height={64} // 4rem
+            className="w-16 h-16 order-1 shadow-[0px_0px_6px_0px_#5a60f629]"
+            style={{ color: 'transparent' }}
+            src="https://lh4.googleusercontent.com/-kiVZ_s4HFKk/AAAAAAAAAAI/AAAAAAAAAAA/ZRXWGS6drcU/s44-p-k-no-ns-nd/photo.jpg"
+          />
+        </h4>
     <div className="flex items-center gap-[10px] md:gap-[16px]">
       {options.map((op, index) => (
         <div
@@ -107,7 +118,7 @@ const MainContainer = ({
                 : [...prevState, op.id]
             )
           }
-          className={`h-[44px] flex items-center hover:border-green transition-all duration-300 ease-in-out cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] ${
+          className={`h-[50px] flex items-center hover:border-green transition-all duration-300 ease-in-out cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] ${
             activeOpt.includes(op.id)
               ? "border-green bg-lightGreen"
               : "bg-white border-lightGray"
@@ -122,16 +133,17 @@ const MainContainer = ({
           {op.icon}
         </div>
       ))}
-    </div>
-            <div className="flex items-center gap-[10px] md:gap-[16px]">
-              <div
-                onClick={() => setShowCreate(true)}
-                className="border border-[#29292E] cursor-pointer text-[14px] font-[500] text-[#29292E] py-[8px] px-[16px] rounded-[8px] flex items-center gap-[8px] h-[36px]"
-              >
-                <GoPlus className="text-[20px]" />
-                <span>إضافة حساب</span>
-              </div>
+                  <div className="flex items-center gap-[10px] md:gap-[16px]">
+                  <div
+              onClick={() => setShowCreate(true)}
+              className="h-[40px] border border-[#29292E] cursor-pointer text-[14px] font-[500] text-[#29292E] py-[8px] px-[16px] rounded-[8px] flex items-center gap-[8px]"
+            >
+              <GoPlus className="text-[16px]" />
+              <span>إضافة</span>
             </div>
+            </div>
+    </div>
+
             </div>
           <div className="w-full bg-lightGray h-[1px] mb-[-8px]" />
 </>
