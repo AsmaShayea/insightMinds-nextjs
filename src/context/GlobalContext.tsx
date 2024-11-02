@@ -1,5 +1,7 @@
 "use client";
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 
 interface GlobalContextType {
   showSideM: boolean;
@@ -23,6 +25,9 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({
 
   const toggleCreatePopup = () => setShowCreate(true);
 
+  // Create a client
+const queryClient = new QueryClient();
+
   return (
     <GlobalContext.Provider
       value={{
@@ -33,7 +38,10 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({
         setShowCreate,
       }}
     >
+       <QueryClientProvider client={queryClient}>
+
       {children}
+       </QueryClientProvider>
     </GlobalContext.Provider>
   );
 };

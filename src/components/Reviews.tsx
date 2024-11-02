@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import ReviewBox from "./ReviewBox";
+import { useSearchParams } from "next/navigation";
 
 const tabs = [
   {
@@ -19,6 +20,10 @@ const tabs = [
 ];
 
 const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
+
+  const searchParams = useSearchParams();
+  const isMyBusiness = searchParams.get("myBusiness");
+
   const [activeTab, setActiveTab] = useState("Positive");
 
   // Memoize the reviews based on the active tab
@@ -68,6 +73,7 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
             <ReviewBox
               key={`${review?.id}-${activeTab.toLowerCase()}-${index}`}
               review={review}
+              isMyBusiness={isMyBusiness}
             />
           ))
         )}

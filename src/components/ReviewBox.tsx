@@ -11,7 +11,7 @@ import {
 import EditReviewPopup from "./Popups/EditReviewPopup";
 import ReviewPopup from "./Popups/ReviewPopup";
 
-const ReviewBox = ({ review }: { review: any }) => {
+const ReviewBox = ({ review,isMyBusiness }: { review: any;isMyBusiness:boolean; }) => {
   const [showReplyPopup, setShowReplyPopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
 
@@ -67,25 +67,31 @@ const ReviewBox = ({ review }: { review: any }) => {
           </div>
         </div>
       </div>
+
+    { isMyBusiness && (
+      <>
       <div className="w-full bg-lightGray h-[1px]" />
-      <div className="flex items-start gap-[24px]">
-        <div
-          onClick={() => setShowEditPopup(true)}
-          className="flex items-center gap-[8px] cursor-pointer"
-        >
-          <PencilSquareIcon className="w-[20px] h-[20px] text-black" />
-          <span className="text-[14px] leading-[19px] text-black">تعديل</span>
+        <div className="flex items-start gap-[24px]">
+          <div
+            onClick={() => setShowEditPopup(true)}
+            className="flex items-center gap-[8px] cursor-pointer"
+          >
+            <PencilSquareIcon className="w-[20px] h-[20px] text-black" />
+            <span className="text-[14px] leading-[19px] text-black">تعديل</span>
+          </div>
+          <div
+            onClick={() => setShowReplyPopup(true)}
+            className="flex items-center gap-[8px] cursor-pointer"
+          >
+            <ArrowUturnLeftIcon className="w-[20px] h-[20px] text-black" />
+            <span className="text-[14px] leading-[19px] text-black">
+              {review?.owner_reply ? "تغيير التعليق" : " رد علي التعليق"}
+            </span>
+          </div>
         </div>
-        <div
-          onClick={() => setShowReplyPopup(true)}
-          className="flex items-center gap-[8px] cursor-pointer"
-        >
-          <ArrowUturnLeftIcon className="w-[20px] h-[20px] text-black" />
-          <span className="text-[14px] leading-[19px] text-black">
-            {review?.owner_reply ? "تغيير التعليق" : " رد علي التعليق"}
-          </span>
-        </div>
-      </div>
+    </>
+    )}
+
       {showReplyPopup && (
         <EditReviewPopup
           key={`reviewEdit-${review?.id}`}

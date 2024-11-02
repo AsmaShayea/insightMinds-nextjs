@@ -71,11 +71,15 @@ const MainContainer = ({
   setActiveTab,
   setMobTab,
   mobTab,
+  showOptionsBar=false,
+  isMyBusiness=false,
 }: {
   activeTab: string;
   setActiveTab: any;
   setMobTab: any;
   mobTab: string;
+  showOptionsBar?: boolean;
+  isMyBusiness?: boolean;
 }) => {
   const [activeOpt, setActiveOpt] = useState(["1"]);
   const [startDate, setStartDate] = useState<Date>(null);
@@ -87,74 +91,81 @@ const MainContainer = ({
       <div className="bg-white shadow-sidebar relative z-[10]  p-[24px] px-[20px] lg:p-[48px] lg:pb-[32px] flex flex-col gap-[16px] lg:gap-[24px] w-full ">
         <div className="w-full lg:hidden bg-lightGray h-[1px]" />
 
-        <div className="flex sm:flex-nowrap flex-wrap items-center w-full justify-between sm:h-[44px] gap-[20px] sm:gap-[50px]">
-        <h4 className="w-full h-[48px] gap-x-2 text-[14px] transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex flex-row items-center">
-          <span className="order-2 text-[18px] font-bold">نمق كافيه | قهوة مختصة وأكثر</span>
-          <Image
-            alt="Insights-Minds"
-            width={64} // 4rem
-            height={64} // 4rem
-            className="w-16 h-16 order-1 shadow-[0px_0px_6px_0px_#5a60f629]"
-            style={{ color: 'transparent' }}
-            src="https://lh4.googleusercontent.com/-kiVZ_s4HFKk/AAAAAAAAAAI/AAAAAAAAAAA/ZRXWGS6drcU/s44-p-k-no-ns-nd/photo.jpg"
-          />
-        </h4>
 
-          <div className="flex items-center gap-[10px] md:gap-[16px]">
-            {options.map((op, index) => (
-              <div
-                key={index}
-                onClick={() =>
-                  setActiveOpt((prevState) =>
-                    prevState.includes(op.id)
-                      ? prevState.filter((id) => id !== op.id)
-                      : [...prevState, op.id]
-                  )
-                }
-                className={`h-[50px] flex items-center hover:border-green transition-all duration-300 ease-in-out cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] ${
-                  activeOpt.includes(op.id)
-                    ? "border-green bg-lightGreen"
-                    : "bg-white border-lightGray"
-                }`}
-              >
-                {activeOpt.includes(op.id) && (
-                  <CheckCircleIcon className="h-[21px] w-[21px] text-green" />
-                )}
-                <span className="text-[14px] leading-[21px] lg:inline-flex hidden font-[400] text-black">
-                  {op.name}
-                </span>
-                {op.icon}
-              </div>
-            ))}
-             <div className="h-[40px] flex items-center gap-[10px] md:gap-[16px]">
-            <div
-              onClick={() => setShowCreate(true)}
-              className="h-[40px] border border-[#29292E] cursor-pointer text-[14px] font-[500] text-[#29292E] py-[8px] px-[16px] rounded-[8px] flex items-center gap-[8px]"
-            >
-              <GoPlus className="text-[16px]" />
-              <span>إضافة</span>
-            </div>
-          </div>
-          </div>
+{ isMyBusiness &&
+<>
+  
+          <div className="flex sm:flex-nowrap flex-wrap items-center w-full justify-between sm:h-[44px] gap-[20px] sm:gap-[50px]">
+    <div className="flex items-center gap-[10px] md:gap-[16px]">
+      {options.map((op, index) => (
+        <div
+          key={index}
+          onClick={() =>
+            setActiveOpt((prevState) =>
+              prevState.includes(op.id)
+                ? prevState.filter((id) => id !== op.id)
+                : [...prevState, op.id]
+            )
+          }
+          className={`h-[44px] flex items-center hover:border-green transition-all duration-300 ease-in-out cursor-pointer gap-[10px] rounded-[16px] py-[8px] px-[16px] border-[1.5px] ${
+            activeOpt.includes(op.id)
+              ? "border-green bg-lightGreen"
+              : "bg-white border-lightGray"
+          }`}
+        >
+          {activeOpt.includes(op.id) && (
+            <CheckCircleIcon className="h-[21px] w-[21px] text-green" />
+          )}
+          <span className="text-[16px] leading-[21px] lg:inline-flex hidden font-[400] text-black">
+            {op.name}
+          </span>
+          {op.icon}
         </div>
-        <div className="w-full bg-lightGray h-[1px] mb-[-8px]" />
-        <div className="flex items-center justify-between gap-[20px] flex-wrap">
-          <div className="flex items-center gap-[16px]">
-            {tabs.map((t, index) => (
+      ))}
+    </div>
+            <div className="flex items-center gap-[10px] md:gap-[16px]">
               <div
+                onClick={() => setShowCreate(true)}
+                className="border border-[#29292E] cursor-pointer text-[14px] font-[500] text-[#29292E] py-[8px] px-[16px] rounded-[8px] flex items-center gap-[8px] h-[36px]"
+              >
+                <GoPlus className="text-[20px]" />
+                <span>إضافة حساب</span>
+              </div>
+            </div>
+            </div>
+          <div className="w-full bg-lightGray h-[1px] mb-[-8px]" />
+</>
+          
+}
+
+
+
+
+        {/* Filters  */}
+       { showOptionsBar && <div className="flex items-center justify-between gap-[20px] flex-wrap">
+          <div className="flex items-center gap-[16px]">
+            {tabs.map((t, index) => { 
+              if(t.name == "تحليلات النصوص" && isMyBusiness == false){
+                return <></>
+              }
+              return (
+                <div
                 key={index}
                 onClick={() => setActiveTab(t.id)}
                 className={`h-[44px] flex items-center cursor-pointer hover:border-main border transition-all duration-300 ease-in-out gap-[8px]  text-[16px] leading-[21px] rounded-[16px] py-[8px] px-[16px] ${
                   t.id == activeTab
-                    ? "bg-main  text-white border-main"
-                    : "bg-bgClr text-black border-transparent hover:bg-[#ECECFE]"
+                  ? "bg-main  text-white border-main"
+                  : "bg-bgClr text-black border-transparent hover:bg-[#ECECFE]"
                 }`}
-              >
+                >
                 {t.icon}
                 <span className="">{t.name}</span>
               </div>
-            ))}
+              )
+
+})}
           </div>
+          
           <div className="flex items-center gap-[16px]">
             <div className="relative hidden lg:flex items-center  justify-between border hover:border-green transition-all duration-300 ease-in-out text-[14px] leading-[19px] font-[500] text-black border-lightGray bg-white px-[16px] py-[8px] rounded-[8px]  w-full gap-[14px] max-w-[250px] ">
               <DatePicker
@@ -191,7 +202,7 @@ const MainContainer = ({
               <ArrowTopRightOnSquareIcon className="h-[22px] w-[22px] text-black" />
             </div>
           </div>
-        </div>
+        </div>}
       </div>
       {activeTab == "1" && (
         <div className="flex border-b lg:hidden sticky top-[-2px] z-[999] left-0 right-0 bg-white border-lightGray w-full">

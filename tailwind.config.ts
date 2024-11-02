@@ -21,6 +21,19 @@ const config: Config = {
         green:"#3DDA67",
         red:"#FA2057"
       },
+      keyframes:{
+        pulse: {
+         " 0%, 100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: ".8",
+          }
+        }
+      },
+      animation:{
+        pulse: "pulse 1.1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      }
     },
   },
   plugins: [],
