@@ -78,7 +78,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
   const { data: progressData } = useQuery({
     queryKey: ["progressStatus"],
     queryFn: fetchProgressStatus,
-    refetchInterval: progressStatus !== "completed" ? 5000 : false,
+    refetchInterval: progressStatus !== "completed" ? 1000 : false,
     enabled: progressStatus !== "completed" && id != null,
   });
 
@@ -159,7 +159,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
       />
 
       <div className={`relative size-full`}>
-        {loadingReviews || loadingGraphs || loadingTabTwo || progressStatus == null ? (
+        {loadingGraphs || loadingTabTwo || progressStatus == null ? (
           <Loader />
         ) : progressStatus == "incomplete" ? (
           <div className='flex  !bg-white h-full flex-col items-center justify-center w-full rounded-2xl'>

@@ -65,7 +65,7 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-[16px] lg:max-h-[900px] lg:overflow-y-auto custom_scroll">
+      <div className="flex flex-col gap-[16px] lg:max-h-[1235px] lg:overflow-y-auto custom_scroll">
         {loading ? (
           <div>Loading reviews...</div>
         ) : (

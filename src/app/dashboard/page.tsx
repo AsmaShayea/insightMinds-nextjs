@@ -130,7 +130,7 @@ const Dashboard = () => {
         setMobTab={setMobActiveTab}
       />
       <div className="relative h-full">
-        {loading || loadingReviews || loadingTabTwo ? (
+        {loading || loadingTabTwo ? (
           <Loader />
         ) : (
           <>
