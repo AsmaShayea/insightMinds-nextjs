@@ -175,7 +175,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
                   className='w-[75px] h-[20px]  object-cover'
                 />
               ) : (
-                <span> رد علي التعليق</span>
+                <span> رد على التعليق </span>
               )}
             </button>
           </div>

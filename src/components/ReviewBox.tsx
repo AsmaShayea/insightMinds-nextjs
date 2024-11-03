@@ -79,7 +79,7 @@ const ReviewBox = ({ review,isMyBusiness}: { review: any;isMyBusiness:string; })
             className="flex items-center gap-[8px] cursor-pointer"
           >
             <PencilSquareIcon className="w-[20px] h-[20px] text-black" />
-            <span className="text-[14px] leading-[19px] text-black">تعديل</span>
+            <span className="text-[14px] leading-[19px] text-black">تصحيح التقييم</span>
           </div>
           <div
             onClick={() => setShowReplyPopup(true)}
@@ -87,7 +87,7 @@ const ReviewBox = ({ review,isMyBusiness}: { review: any;isMyBusiness:string; })
           >
             <ArrowUturnLeftIcon className="w-[20px] h-[20px] text-black" />
             <span className="text-[14px] leading-[19px] text-black">
-              {review?.owner_reply ? "تغيير التعليق" : " رد علي التعليق"}
+              {review?.owner_reply ? "تغيير التعليق" : " رد على التعليق"}
             </span>
           </div>
         </div>

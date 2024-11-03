@@ -156,10 +156,10 @@ const ReviewPopup = ({
               onClick={() => setShow(false)}
               className="text-[14px] text-[#29292E] leading-[19px] font-medium"
             >
-              الغاء
+              إلغاء
             </button>
             <button className="text-[14px] leading-[19px] text-white rounded-[48px] px-[16px] py-[8px] bg-[#5A60F6] font-medium">
-              رد علي التعليق
+              إرسال
             </button>
           </div>
         </div>

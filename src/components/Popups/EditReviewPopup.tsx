@@ -66,7 +66,7 @@ const EditReviewPopup = ({
         style={{ boxShadow: "0px 12px 64px 0px #A3B5D433" }}
       >
         <h4 className='text-[20px] leading-[24px] text-[#29292E] font-[600] '>
-          رد علي التعليق
+        رد على التعليق
         </h4>
         <div className='flex flex-col gap-[16px] w-full'>
           <div className='bg-[#EAEAEC80] p-[16px] rounded-[16px] flex flex-col gap-[8px]'>
@@ -167,10 +167,10 @@ const EditReviewPopup = ({
               onClick={() => setShow(false)}
               className='text-[14px] text-[#29292E] leading-[19px] font-medium'
             >
-              الغاء
+              إلغاء
             </button>
             <button className='text-[14px] leading-[19px] text-white rounded-[48px] px-[16px] py-[8px] bg-[#5A60F6] font-medium'>
-              رد علي التعليق
+              إرسال الرد
             </button>
           </div>
         </div>

@@ -7,7 +7,7 @@ const TabTwo = ({ data }: { data: any }) => {
 
   return (
     <div className="w-full flex flex-col gap-[16px] p-[20px] lg:p-[48px]">
-      <div className="flex flex-col gap-[16px] ">
+      <div className="flex flex-col gap-[16px] hidden">
         <h3 className="text-[20px] text-black leading-[27px] font-medium">
           مواضيع
         </h3>
