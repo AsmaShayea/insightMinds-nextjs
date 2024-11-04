@@ -14,7 +14,7 @@ export default function Home() {
             <div>
               <ul className="flex items-center gap-8">
                 <li>
-                  <Link href="/" className="text-lg leading-6 text-black">
+                  <Link href="/sign-up" className="text-lg leading-6 text-black">
                     حساب جديد
                   </Link>
                 </li>
