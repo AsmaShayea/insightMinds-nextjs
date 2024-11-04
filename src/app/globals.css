@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "SF Arabic Regular";
+  src: url("/src/app/fonts/sf-arabic/SFArabic-Regular.woff");
+}
+
 .custom_scroll::-webkit-scrollbar {
   width: 5px;
   border-radius: 20px;
