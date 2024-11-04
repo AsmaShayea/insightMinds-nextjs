@@ -8,6 +8,7 @@ import {
   CalendarDaysIcon,
   PresentationChartBarIcon,
   QueueListIcon,
+  UserGroupIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { FaInstagram, FaPlus } from "react-icons/fa";
@@ -51,6 +52,11 @@ const tabs = [
     id: "2",
     name: "تحليلات النصوص",
     icon: <QueueListIcon className="h-[22px] w-[22px]" />,
+  },
+  {
+    id: "٣",
+    name: "تقييم الموظفين",
+    icon: <UserGroupIcon className="h-[22px] w-[22px]" />,
   },
 ];
 const tabsMob = [
@@ -141,7 +147,7 @@ const MainContainer = ({
             height={64} // 4rem
             className="w-16 h-16 order-1 shadow-[0px_0px_6px_0px_#5a60f629]"
             style={{ color: 'transparent' }}
-            src={currentSelected?.logo || "/"}
+            src={currentSelected?.logo || "https://i.ibb.co/ZxCr1Sk/Union.jpg"}
           />
         </h4>
    {isMyBusiness && <div className="flex items-center gap-[10px] md:gap-[16px]">
