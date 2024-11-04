@@ -57,7 +57,7 @@ export default function Home() {
 
       {/* Explanation Section One  */}
       <section className="bg-Sec2bg bg-cover bg-center">
-        <div className="flex items-center pt-20 pb-24 gap-10 max-w-[1440px] mx-auto px-10">
+        <div className="flex items-center pt-20 pb-24 gap-16 max-w-7xl mx-auto px-4">
           <div className="w-full max-w-[519px]">
             <div className="flex flex-col gap-7">
               <h1 className="text-5xl leading-[62.91px] font-semibold text-black">إدارة التعليقات من مكان واحد</h1>
@@ -78,7 +78,7 @@ export default function Home() {
 
       {/* Explanation Section Two  */}
       <section className="bg-Sec3bg bg-cover bg-center">
-        <div className="pt-32 max-w-[1440px] mx-auto px-10">
+        <div className="pt-32 max-w-7xl mx-auto px-4">
           <h1 className="text-5xl leading-[62.91px] font-semibold text-black text-center">مساعدك الذكي يعمل لأجلك</h1>
           <div className="grid grid-cols-4 gap-5 mt-14 mb-24">
             <div className="col-span-1">
@@ -155,7 +155,7 @@ export default function Home() {
 
       {/* Explanation Section Three  */}
       <section className="bg-Sec2bg bg-cover bg-center">
-        <div className="flex items-center py-20 gap-10 max-w-[1440px] mx-auto px-10">
+        <div className="flex items-center py-20 gap-16 max-w-7xl mx-auto px-4">
           <div className="w-full max-w-[600px]">
             <div className="flex flex-col gap-7">
               <Image src="/bell.png" alt="bell" width={166} height={163} />
@@ -174,7 +174,7 @@ export default function Home() {
 
       {/* Footer Section */}
       <footer className="bg-Footerbg bg-cover bg-center">
-        <div className="flex items-center py-20 gap-28 max-w-[1440px] mx-auto px-10">
+        <div className="flex items-center py-20 gap-28 max-w-7xl mx-auto px-4">
           <div className="w-full max-w-[519px]">
             <div className="flex flex-col gap-7">
               <h1 className="text-5xl leading-[62.91px] font-semibold text-black">راقب سمعتك في السوق</h1>
