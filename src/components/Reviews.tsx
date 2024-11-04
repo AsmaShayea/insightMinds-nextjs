@@ -67,7 +67,9 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
       </div>
       <div className="flex flex-col gap-[16px] lg:max-h-[1235px] lg:overflow-y-auto custom_scroll">
         {loading ? (
-          <div>Loading reviews...</div>
+         <div className="text-[rgb(90_96_246)] text-opacity-75 pt-4">
+         جاري تحميل التعليقات ...
+       </div>
         ) : (
           reviewsToDisplay.map((review: any,index:number) => (
             <ReviewBox
