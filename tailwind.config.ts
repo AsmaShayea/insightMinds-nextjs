@@ -24,9 +24,6 @@ const config: Config = {
         green: "#3DDA67",
         red: "#FA2057",
       },
-      fontFamily: {
-        sfarabicregular: ["SF Arabic Regular"],
-      },
       backgroundImage: {
         Footerbg: "linear-gradient(87.59deg, #FFFFFF 20.47%, #F0F8F8 49.46%, #CFE9E7 72.94%, #D7D4EE 99.93%)",
         Sec2bg: "linear-gradient(254.29deg, #F8F9FF 0.01%, #FFFFFF 102.15%)",

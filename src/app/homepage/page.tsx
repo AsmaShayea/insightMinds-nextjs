@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const HomePage = () => {
   return (
-    <main>
+    <main className="font-cario">
       {/* hero Section  */}
       <div className="bg-[url('/bg-2.png')] w-full bg-cover bg-center">
         <div className="bg-[url('/Bg.png')] w-full bg-cover bg-center">
@@ -21,7 +21,7 @@ const HomePage = () => {
                 <li>
                   <Link
                     href="/sign-up"
-                    className="text-lg leading-6 text-black bg-white/80 border border-[#29292E4D] py-4 px-6 rounded-lg"
+                    className="text-lg leading-6 text-black bg-white/80 border border-[#29292E4D] py-3.5 px-6 rounded-lg"
                   >
                     تسجيل الدخول
                   </Link>
@@ -29,20 +29,26 @@ const HomePage = () => {
               </ul>
             </div>
           </header>
-          <div className="flex items-center pt-20 pb-24 max-w-[1440px] mx-auto">
-            <div className="w-full max-w-[610px] px-10">
-              <div className="flex flex-col gap-7">
-                <h1 className="text-5xl leading-[62.91px] font-semibold text-black">
-                  نجاح علامتك التجارية يبدأ بالاستماع إلى عملائك
-                </h1>
-                <p className="text-2xl leading-9 font-medium text-black">
-                  مع أداة الذكاء الصناعي للتحليل، ابنِ وطوّر علامتك التجارية بناءً على رغباتهم، واكسب ولاءهم لزيادة
-                  مبيعاتك.
-                </p>
+          <div className="relative pt-20 pb-24">
+            <div className="flex items-center pt-20 pb-24 max-w-7xl mx-auto px-4">
+              <div className="w-full max-w-[519px]">
+                <div className="flex flex-col gap-7">
+                  <h1 className="text-5xl leading-[62.91px] font-semibold text-black">
+                    نجاح علامتك التجارية يبدأ بالاستماع إلى عملائك
+                  </h1>
+                  <p className="text-2xl leading-9 font-medium text-black">
+                    مع أداة الذكاء الصناعي للتحليل، ابنِ وطوّر علامتك التجارية بناءً على رغباتهم، واكسب ولاءهم لزيادة
+                    مبيعاتك.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="w-auto relative">
-              <Image src="/hero-sec-img-2.png" alt="hero" width={710} height={531} className="w-full" />
+              <div className="absolute left-0 h-full w-full">
+                <div className="flex items-center justify-end h-full w-full max-w-[1520px] mx-auto">
+                  <div className="w-[50%] [@media(min-width:1390px)]:w-[50%]">
+                    <Image src="/hero-sec-img-2.png" alt="hero" width={710} height={531} className="w-full" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -51,7 +57,7 @@ const HomePage = () => {
 
       {/* Explanation Section One  */}
       <section className="bg-Sec2bg bg-cover bg-center">
-        <div className="flex items-center pt-20 pb-24 gap-10 max-w-[1440px] mx-auto px-10">
+        <div className="flex items-center pt-20 pb-24 gap-16 max-w-7xl mx-auto px-4">
           <div className="w-full max-w-[519px]">
             <div className="flex flex-col gap-7">
               <h1 className="text-5xl leading-[62.91px] font-semibold text-black">إدارة التعليقات من مكان واحد</h1>
@@ -72,7 +78,7 @@ const HomePage = () => {
 
       {/* Explanation Section Two  */}
       <section className="bg-Sec3bg bg-cover bg-center">
-        <div className="pt-32 max-w-[1440px] mx-auto px-10">
+        <div className="pt-32 max-w-7xl mx-auto px-4">
           <h1 className="text-5xl leading-[62.91px] font-semibold text-black text-center">مساعدك الذكي يعمل لأجلك</h1>
           <div className="grid grid-cols-4 gap-5 mt-14 mb-24">
             <div className="col-span-1">
@@ -108,7 +114,6 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          {/* <div className="py-40 bg-[url('/background-section.png')] bg-cover bg-center"> */}
           <div className="relative isolate overflow-hidden">
             <div className="pt-36 pb-10">
               <div className="flex-col flex items-center gap-4 relative max-w-5xl mx-auto pt-8 pb-20">
@@ -149,7 +154,7 @@ const HomePage = () => {
 
       {/* Explanation Section Three  */}
       <section className="bg-Sec2bg bg-cover bg-center">
-        <div className="flex items-center py-20 gap-10 max-w-[1440px] mx-auto px-10">
+        <div className="flex items-center py-28 gap-16 max-w-7xl mx-auto px-4">
           <div className="w-full max-w-[600px]">
             <div className="flex flex-col gap-7">
               <Image src="/bell.png" alt="bell" width={166} height={163} />
@@ -159,8 +164,9 @@ const HomePage = () => {
               </p>
             </div>
           </div>
-          <div className="w-auto relative">
+          <div className="w-auto relative isolate">
             <Image src="/section-two.png" alt="hero" width={565} height={392} className="w-full" />
+            <div className="absolute top-1/2 left-1/2 w-full h-full z-[-1] rounded-full blur-3xl bg-[#A3B5D466] backdrop-blur-xl -translate-y-1/2 -translate-x-1/2"></div>
           </div>
         </div>
       </section>
@@ -168,7 +174,7 @@ const HomePage = () => {
 
       {/* Footer Section */}
       <footer className="bg-Footerbg bg-cover bg-center">
-        <div className="flex items-center py-20 gap-28 max-w-[1440px] mx-auto px-10">
+        <div className="flex items-center pb-10 pt-28 gap-28 max-w-7xl mx-auto px-4">
           <div className="w-full max-w-[519px]">
             <div className="flex flex-col gap-7">
               <h1 className="text-5xl leading-[62.91px] font-semibold text-black">راقب سمعتك في السوق</h1>
@@ -178,8 +184,9 @@ const HomePage = () => {
               </p>
             </div>
           </div>
-          <div className="w-auto relative">
+          <div className="w-auto relative isolate">
             <Image src="/footer-img-2.png" alt="hero" width={605} height={481} className="w-full" />
+            <div className="absolute top-1/2 left-1/2 w-full h-full z-[-1] rounded-full blur-3xl bg-[#A3B5D466] backdrop-blur-xl -translate-y-1/2 -translate-x-1/2"></div>
           </div>
         </div>
         <div className="flex items-center justify-center bg-white/80 backdrop-blur-[20px] py-6">
