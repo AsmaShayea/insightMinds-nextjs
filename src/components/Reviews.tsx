@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 const tabs = [
   {
     id: "Positive",
-    name: "ايجابي",
+    name: "إيجابي",
   },
   {
     id: "Neutral",
@@ -47,7 +47,7 @@ const Reviews = ({ data, loading }: { data: any; loading: boolean }) => {
     <div  className="flex flex-col gap-[16px] w-full lg:w-[42%]">
       <div className="flex flex-col gap-[16px]">
         <h2 className="text-[16px] leading-[21px] font-[600] text-black">
-          اراء العملاء
+        آراء العملاء
         </h2>
         <div className="flex border-b border-lightGray w-full">
           {tabs.map((tab, index) => (

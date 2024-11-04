@@ -48,7 +48,7 @@ const LineChart = ({ data }: { data: any }) => {
     labels, // Use dynamic labels from API data
     datasets: [
       {
-        label: "ايجابية",
+        label: "إيجابية",
         data: positiveCounts,
         borderColor: "#3DDA67",
         borderWidth: 2,
@@ -162,14 +162,14 @@ const LineChart = ({ data }: { data: any }) => {
     <div className="bg-white shadow-sidebar h-[250px] w-full p-[16px] rounded-[16px] flex flex-col justify-between gap-[16px]">
       <div className="flex items-center justify-between gap-[10px]">
         <div className="text-[16px] leading-[21px] text-black font-[600]">
-          الاراء
+          الآراء
         </div>
 
         <div className="flex items-center gap-[24px] text-black">
           <div className="flex items-center gap-[5px]">
             <div className="w-[12px] h-[12px] rounded-full bg-green" />
             <span className="text-[12px] leading-[16px] font-[400] ">
-              ايجابية
+            إيجابية
             </span>
           </div>
           <div className="flex items-center gap-[5px]">

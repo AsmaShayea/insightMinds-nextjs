@@ -61,7 +61,7 @@ const Feelings = ({ data }: { data: any }) => {
                 <p className="text-[14px] leading-[19px] font-[700]">
                   {a?.positive}%
                 </p>
-                <p className="text-[14px] leading-[19px] font-[400]">ايجابي</p>
+                <p className="text-[14px] leading-[19px] font-[400]">إيجابي</p>
               </div>
 
               {/* <div className="flex flex-col justify-center items-center gap-[8px]">

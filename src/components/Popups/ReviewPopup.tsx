@@ -96,7 +96,7 @@ const ReviewPopup = ({
                     className="flex items-center cursor-pointer border border-green hover:bg-green hover:text-black transition-all duration-300 ease-in-out p-[8px]  rounded-[12px] gap-[4px] text-[12px] leading-[16px] text-green"
                     onClick={() => handleSentimentSelection("positive")} // Positive selection
                   >
-                    ايجابي
+                    إيجابي
                   </button>
                   <button
                     className="flex items-center cursor-pointer border border-red hover:bg-red hover:text-white transition-all duration-300 ease-in-out p-[8px]  rounded-[12px] gap-[4px] text-[12px] leading-[16px] text-red"
@@ -108,7 +108,7 @@ const ReviewPopup = ({
                     className="flex items-center cursor-pointer p-[8px]  rounded-[12px] gap-[4px] hover:text-opacity-90 transition-all duration-300 ease-in-out text-[12px] leading-[16px] text-black"
                     onClick={() => setSelectedWord(null)} // Cancel selection
                   >
-                    الغاء
+                    إلغاء
                   </button>
                 </div>
               </div>
@@ -117,7 +117,7 @@ const ReviewPopup = ({
             <div className="flex items-center gap-[6px] text-[10px] leading-[13px] text-black">
               <InformationCircleIcon className="h-[18px] w-[18px] text-black" />
               <span>
-                اضغط علي الكلمة من النص لاضافتها الي الايجابي او السلبي او
+                اضغط علي الكلمة من النص لإضافتها إلى الإيجابي أو السلبي او
                 التعديل عليها
               </span>
             </div>
@@ -159,7 +159,7 @@ const ReviewPopup = ({
               إلغاء
             </button>
             <button className="text-[14px] leading-[19px] text-white rounded-[48px] px-[16px] py-[8px] bg-[#5A60F6] font-medium">
-              إرسال
+              حفظ
             </button>
           </div>
         </div>

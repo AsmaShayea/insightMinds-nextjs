@@ -17,11 +17,11 @@ const options = [
   },
   {
     id: "2",
-    name: "إنستجرام",
+    name: "انستجرام",
   },
   {
     id: "3",
-    name: "اكس (تويتر)",
+    name: "إكس (تويتر)",
   },
 ];
 
@@ -68,7 +68,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
         style={{ boxShadow: "0px 12px 64px 0px #A3B5D433" }}
       >
         <h4 className='text-[20px] leading-[24px] text-[#29292E] font-[600] '>
-          موضوع جديد
+          إضافة حساب جديد
         </h4>
         <form
           onSubmit={handleFetchBusinessId}
@@ -139,7 +139,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
           </div>
           <div className='flex flex-col gap-[8px] relative text-[14px] leading-[19px] text-black font-[500] w-full'>
             <label htmlFor='' className=''>
-              الي{" "}
+              إلى{" "}
             </label>
             <div className='relative flex items-center  h-[48px] justify-between text-[14px] leading-[19px] font-[500] border text-[#29292E] outline-none border-lightGray p-[16px] rounded-[16px]  bg-white w-full gap-[14px]'>
               <DatePicker
@@ -159,7 +159,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
               onClick={() => setShow(false)}
               className='text-[14px] text-[#29292E] leading-[19px] font-medium'
             >
-              الغاء
+              إلغاء
             </button>
 
             <button
@@ -175,7 +175,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
                   className='w-[75px] h-[20px]  object-cover'
                 />
               ) : (
-                <span> رد على التعليق </span>
+                <span> تحليل وإضافة </span>
               )}
             </button>
           </div>

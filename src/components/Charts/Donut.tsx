@@ -52,7 +52,7 @@ const Donut = ({
               <p className="text-[14px] leading-[19px] font-[700]">
                 {dataC?.positive?.percentage}%
               </p>
-              <p className="text-[14px] leading-[19px] font-[400]">ايجابي</p>
+              <p className="text-[14px] leading-[19px] font-[400]">إيجابي</p>
             </div>
           </div>
           <div className="flex items-center gap-[8px]">

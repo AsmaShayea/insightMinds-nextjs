@@ -32,12 +32,12 @@ const options = [
   },
   {
     id: "2",
-    name: "إنستجرام",
+    name: "انستجرام",
     icon: <FaInstagram className="h-[22px] w-[22px] text-black" />,
   },
   {
     id: "3",
-    name: "اكس",
+    name: "إكس",
     icon: <FaXTwitter className="h-[22px] w-[22px] text-black" />,
   },
 ];
@@ -71,7 +71,7 @@ const tabsMob = [
 
   {
     id: "c3",
-    name: "اراء العملاء",
+    name: "آراء العملاء",
   },
 ];
 
@@ -141,14 +141,15 @@ const MainContainer = ({
     <div className="flex sm:flex-nowrap flex-wrap items-center w-full justify-between sm:h-[44px] gap-[20px] sm:gap-[50px]">
     <h4 className="w-full h-[48px] gap-x-2 text-[14px] transition-all duration-300 ease-in-out leading-[19px] text-black py-[4px] flex flex-row items-center">
           <span className="order-2 text-[18px] font-bold">{currentSelected?.name}</span>
-          <Image
-            alt="Insights-Minds"
-            width={64} // 4rem
-            height={64} // 4rem
-            className="w-16 h-16 order-1 shadow-[0px_0px_6px_0px_#5a60f629]"
-            style={{ color: 'transparent' }}
-            src={currentSelected?.logo || "https://i.ibb.co/ZxCr1Sk/Union.jpg"}
-          />
+          {currentSelected?.logo ? (
+            <Image
+              src={currentSelected.logo}
+              alt="Logo"
+              width={64}
+              height={64}
+              className="w-16 h-16 order-1 shadow-[0px_0px_6px_0px_#5a60f629]"
+            />
+          ) : null}
         </h4>
    {isMyBusiness && <div className="flex items-center gap-[10px] md:gap-[16px]">
       {options.map((op, index) => (
@@ -252,7 +253,7 @@ const MainContainer = ({
               className={`h-[44px] flex items-center cursor-pointer gap-[10px] hover:border-green transition-all duration-300 ease-in-out rounded-[16px] py-[8px] px-[16px] border-[1.5px] bg-white border-lightGray`}
             >
               <span className="text-[16px] hidden lg:inline-flex leading-[21px] font-[400] text-black">
-                تصدير
+                تقارير
               </span>
               <ArrowTopRightOnSquareIcon className="h-[22px] w-[22px] text-black" />
             </div>

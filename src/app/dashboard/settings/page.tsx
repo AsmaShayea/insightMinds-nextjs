@@ -15,11 +15,11 @@ const options = [
   },
   {
     id: "2",
-    name: "إنستجرام",
+    name: "انستجرام",
   },
   {
     id: "3",
-    name: "اكس (تويتر)",
+    name: "إكس (تويتر)",
   },
 ];
 
@@ -93,7 +93,7 @@ const Settings = () => {
               </label>
               <input
                 type="text"
-                placeholder="Insight Minds"
+                placeholder="مقهى نمق"
                 value={formData.name}
                 name="name"
                 onChange={handleChange}
@@ -107,7 +107,7 @@ const Settings = () => {
               <div className="flex items-center gap-[16px]">
                 <input
                   type="text"
-                  placeholder=""
+                  placeholder="كافيه"
                   value={formData.category}
                   onChange={handleChange}
                   name="category"
@@ -154,7 +154,7 @@ const Settings = () => {
                 type="text"
                 value={formData.type}
                 name="type"
-                placeholder="Insight Minds"
+                placeholder="قهوة متخصصة"
                 className="bg-white border outline-none w-full border-lightGray p-[16px] rounded-[16px] "
               />
               {/* <ChevronDownIcon className="h-[20px] w-[20px] text-black absolute bottom-[14px] left-[14px]" /> */}
@@ -183,7 +183,7 @@ const Settings = () => {
                 اسم الشركة
               </label>
               <textarea
-                placeholder="شركة الإبداع التكنولوجي هي شرك"
+                placeholder="معلومات الشركة هنا"
                 value={formData.description}
                 name="description"
                 onChange={handleChange}

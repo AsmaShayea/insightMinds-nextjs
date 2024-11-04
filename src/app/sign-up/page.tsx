@@ -43,13 +43,13 @@ const SignUpPage = () => {
                       flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/SA.svg",
                     },
                     {
-                      label: "لتكتشف",
-                      value: "لتكتشف",
+                      label: "الإمارات العربية المتحدة",
+                      value: "الإمارات العربية المتحدة",
                       flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/AE.svg",
                     },
                     {
-                      label: "البشرية",
-                      value: "البشرية",
+                      label: "مملكة البحرين",
+                      value: "مملكة البحرين",
                       flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/QA.svg",
                     },
                   ]}
@@ -76,20 +76,20 @@ const SignUpPage = () => {
                       value: "الرياض",
                     },
                     {
-                      label: "لتكتشف",
-                      value: "لتكتشف",
+                      label: "الخبر",
+                      value: "الخبر",
                     },
                     {
-                      label: "البشرية",
-                      value: "البشرية",
+                      label: "الدمام",
+                      value: "الدمام",
                     },
                     {
-                      label: "الهائمون ",
-                      value: "الهائمون ",
+                      label: "جدة ",
+                      value: "جدة ",
                     },
                     {
-                      label: "لتكتشف ",
-                      value: "لتكتشف ",
+                      label: "مكة",
+                      value: "مكة ",
                     },
                   ]}
                   defaultValue={{

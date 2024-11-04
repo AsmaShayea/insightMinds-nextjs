@@ -137,7 +137,7 @@ const pathname = usePathname()
             >
               <div className="flex items-center justify-between">
                 <div className="text-gray text-[14px] leading-[18px] font-[400]">
-                  المواضيع
+                  تحليل المنافسين
                 </div>
                 <div
                   onClick={() => setShowCreate(true)}
