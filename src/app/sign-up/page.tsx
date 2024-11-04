@@ -1,4 +1,3 @@
-import { QATARIcon, UAEIcon } from "@/assets/constants";
 import CountrySelect from "@/components/PhoneNumberInput";
 import SelectInput from "@/components/SelectInput";
 import Image from "next/image";
@@ -12,7 +11,7 @@ const SignUpPage = () => {
           <Image src="/Logo.svg" alt="brand" width={121.71} height={48} />
         </Link>
       </div>
-      <div className="py-28">
+      <div className="py-20 sm:py-28 px-4 md:px-0">
         <div className="mx-auto max-w-[612px] bg-white rounded-2xl p-8 shadow-signup">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2 border-b border-[#000000]/5 pb-5">
@@ -39,39 +38,26 @@ const SignUpPage = () => {
                   placeholder={"اكتب اسم الشركة"}
                   options={[
                     {
-                      label: (
-                        <div className="flex items-center gap-2">
-                          <Image src="/flag-one.png" alt="flag-one" width={24} height={20} className="rounded-sm" />
-                          <span className="text-sm leading-[18px] font-regular text-right">
-                            المملكة العربية السعودية
-                          </span>
-                        </div>
-                      ),
-                      value: "المملكة العربية السعودية",
+                      value: " المملكة العربية السعودية",
+                      label: " المملكة العربية السعودية",
+                      flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/SA.svg",
                     },
                     {
-                      label: (
-                        <div className="flex items-center gap-2">
-                          <div className="rounded-sm overflow-hidden h-5 w-6">
-                            <UAEIcon />
-                          </div>
-                          <span className="text-sm leading-[18px] font-regular text-right">لتكتشف</span>
-                        </div>
-                      ),
+                      label: "لتكتشف",
                       value: "لتكتشف",
+                      flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/AE.svg",
                     },
                     {
-                      label: (
-                        <div className="flex items-center gap-2">
-                          <div className="rounded-sm overflow-hidden h-5 w-6">
-                            <QATARIcon />
-                          </div>
-                          <span className="text-sm leading-[18px] font-regular text-right">البشرية</span>
-                        </div>
-                      ),
+                      label: "البشرية",
                       value: "البشرية",
+                      flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/QA.svg",
                     },
                   ]}
+                  defaultValue={{
+                    value: " المملكة العربية السعودية",
+                    label: " المملكة العربية السعودية",
+                    flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/SA.svg",
+                  }}
                   menuPlacement={"top"}
                   className={
                     "w-full rounded-2xl p-4 border border-lightGray outline-none focus:outline-none items-center"
@@ -106,6 +92,10 @@ const SignUpPage = () => {
                       value: "لتكتشف ",
                     },
                   ]}
+                  defaultValue={{
+                    label: "الرياض",
+                    value: "الرياض",
+                  }}
                   menuPlacement={"top"}
                   className={
                     "w-full rounded-2xl p-4 border border-lightGray outline-none focus:outline-none items-center"

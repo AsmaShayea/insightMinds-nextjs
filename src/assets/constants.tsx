@@ -8,20 +8,3 @@ export const DropDownIcon = () => (
     />
   </svg>
 );
-export const UAEIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 342">
-    <path fill="#FFF" d="M0 0h513v342H0z" />
-    <path fill="#009e49" d="M0 0h513v114H0z" />
-    <path d="M0 228h513v114H0z" />
-    <path fill="#ce1126" d="M0 0h171v342H0z" />
-  </svg>
-);
-export const QATARIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 342">
-    <path fill="#751A46" d="M0 0h512v342H0z" />
-    <path
-      fill="#FFF"
-      d="M0 0v342h150.3l37.7-19.6-37.7-18.9 37.7-19-37.7-18.9 37.7-19-37.7-19 37.7-18.9-37.7-19 37.7-19-37.7-18.9 37.7-19-37.7-18.9 37.7-19-37.7-19L188 57l-37.7-19L188 19.1 150.3 0z"
-    />
-  </svg>
-);

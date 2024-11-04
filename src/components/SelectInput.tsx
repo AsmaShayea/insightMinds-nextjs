@@ -1,6 +1,7 @@
 "use client";
 
 import { DropDownIcon } from "@/assets/constants";
+import Image from "next/image";
 import { ReactNode, useId } from "react";
 import Select, { components, DropdownIndicatorProps, MenuPlacement } from "react-select";
 interface OptionType {
@@ -21,8 +22,17 @@ interface SelectInputProps {
   placeholder?: string;
   className?: string;
   menuPlacement?: MenuPlacement;
+  defaultValue: OptionType;
 }
-const SelectInput: React.FC<SelectInputProps> = ({ options, placeholder, className, menuPlacement }) => {
+
+const formatOptionLabel = ({ label, flag }: OptionType) => (
+  <div className="flex items-center gap-2">
+    {flag && <Image src={flag || ""} alt="flag-one" width={24} height={20} className="rounded-sm" />}
+    <span className="text-sm leading-[18px] font-regular text-right">{label}</span>
+  </div>
+);
+
+const SelectInput: React.FC<SelectInputProps> = ({ options, placeholder, className, menuPlacement, defaultValue }) => {
   return (
     <Select
       isRtl
@@ -33,7 +43,9 @@ const SelectInput: React.FC<SelectInputProps> = ({ options, placeholder, classNa
         DropdownIndicator,
       }}
       isSearchable={false}
+      formatOptionLabel={formatOptionLabel}
       menuPlacement={menuPlacement}
+      defaultValue={defaultValue}
       onChange={(selectedOption) => console.log(selectedOption)}
       unstyled
       styles={{

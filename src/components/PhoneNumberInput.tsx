@@ -21,7 +21,7 @@ const DropdownIndicator: React.FC<DropdownIndicatorProps<CountryOption>> = (prop
 
 // Define the options array with country data
 const countryOptions: CountryOption[] = [
-  { value: "us", label: "1+", flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/US.svg" },
+  { value: "ae", label: "971+", flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/AE.svg" },
   { value: "qa", label: "974+", flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/QA.svg" },
   { value: "sa", label: "966+", flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/SA.svg" },
   // Add more countries as needed
@@ -52,6 +52,11 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ className }) => {
       options={countryOptions}
       instanceId={useId()}
       formatOptionLabel={formatOptionLabel}
+      defaultValue={{
+        value: "sa",
+        label: "966+",
+        flag: "https://catamphetamine.gitlab.io/country-flag-icons/3x2/SA.svg",
+      }}
       onChange={handleCountryChange}
       components={{
         IndicatorSeparator: () => null,
