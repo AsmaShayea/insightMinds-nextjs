@@ -27,7 +27,7 @@ const pathname = usePathname()
 
   const fetchLinks = async () => {
     const response = await axios.get(
-      "http://16.171.196.223:8000/get-business-data"
+      "http://13.53.122.23:8000/get-business-data"
     );
     return response?.data?.data;
   };

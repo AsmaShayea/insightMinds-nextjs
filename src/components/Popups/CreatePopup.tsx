@@ -44,7 +44,7 @@ const CreatePopup = ({ show, setShow }: { show: boolean; setShow: any }) => {
     try {
       setIsLoading(true);
       const rs = await axios.post(
-        "http://16.171.196.223:8000/scrape-extract-aspects",
+        "http://13.53.122.23:8000/scrape-extract-aspects",
         {
           url: urlValue,
         }

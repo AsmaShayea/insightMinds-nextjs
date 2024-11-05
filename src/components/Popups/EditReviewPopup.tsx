@@ -27,7 +27,7 @@ const EditReviewPopup = ({
     try {
       setMutatingStates({ ...mutatingStates, isWritingRes: true });
       const response = await axios.get(
-        `http://16.171.196.223:8000/get-reply/${id}`
+        `http://13.53.122.23:8000/get-reply/${id}`
       );
       const result = await response.data;
 
@@ -47,7 +47,7 @@ const EditReviewPopup = ({
   const handleCorrectReply = async () => {
     try {
       setMutatingStates({ ...mutatingStates, isTextCorrection: true });
-      const rs = await axios.post("http://16.171.196.223:8000/correct-reply", {
+      const rs = await axios.post("http://13.53.122.23:8000/correct-reply", {
         reply_text: replyText,
       });
 

@@ -49,7 +49,7 @@ const Settings = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://16.171.196.223:8000/get-business-details/66eb726e1b898c92f06c243f"
+          "http://13.53.122.23:8000/get-business-details/66eb726e1b898c92f06c243f"
         );
         const result = await response.data;
 

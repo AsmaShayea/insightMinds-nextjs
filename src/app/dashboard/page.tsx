@@ -37,7 +37,7 @@ const Dashboard = () => {
     ;(async ()=>{
       try {
         const rs = await axios.get(
-          "http://16.171.196.223:8000/get-business-data"
+          "http://0.0.0.0:8000/get-business-data"
         ) 
         
          router.push(`/dashboard/${rs?.data?.data.my_business[0]?.id}?myBusiness=true&progressStatus=${encodeURI(rs?.data?.data.my_business[0]?.progress_status == "completed" ? "completed" : "incomplete" )}`)
@@ -56,7 +56,7 @@ const Dashboard = () => {
       try {
         setLoadingReviews(true);
         const response = await axios.get(
-          "http://16.171.196.223:8000/reviews/66eb726e1b898c92f06c243f"
+          "http://13.53.122.23:8000/reviews/66eb726e1b898c92f06c243f"
         );
         const result = await response.data;
 
@@ -80,7 +80,7 @@ const Dashboard = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://16.171.196.223:8000/insights/66eb726e1b898c92f06c243f"
+          "http://13.53.122.23:8000/insights/66eb726e1b898c92f06c243f"
         );
         const result = await response.data;
 
@@ -102,7 +102,7 @@ const Dashboard = () => {
       try {
         setLoadingTabTwo(true);
         const response = await axios.get(
-          "http://16.171.196.223:8000/generate-text-insights/66eb726e1b898c92f06c243f"
+          "http://13.53.122.23:8000/generate-text-insights/66eb726e1b898c92f06c243f"
         );
         const result = await response.data;
 

@@ -49,27 +49,27 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
 
   const fetchReviews = async () => {
     const response = await axios.get(
-      `http://16.171.196.223:8000/reviews/${id}`
+      `http://13.53.122.23:8000/reviews/${id}`
     );
     return response.data;
   };
 
   const fetchGraphsData = async () => {
     const response = await axios.get(
-      `http://16.171.196.223:8000/insights/${id}`
+      `http://13.53.122.23:8000/insights/${id}`
     );
     return response.data;
   };
 
   const fetchTabTwoData = async () => {
     const response = await axios.get(
-      `http://16.171.196.223:8000/generate-text-insights/${id}`
+      `http://13.53.122.23:8000/generate-text-insights/${id}`
     );
     return response.data;
   };
   const fetchProgressStatus = async () => {
     const response = await axios.get(
-      `http://16.171.196.223:8000/check-loading-status/${id}`
+      `http://13.53.122.23:8000/check-loading-status/${id}`
     );
     return response.data;
   };
