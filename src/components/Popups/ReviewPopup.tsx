@@ -71,7 +71,7 @@ const ReviewPopup = ({
         style={{ boxShadow: "0px 12px 64px 0px #A3B5D433" }}
       >
         <h4 className="text-[20px] leading-[24px] text-[#29292E] font-[600] ">
-          تعديل التعليق
+          تصحيح التقييم
         </h4>
         <div className="flex flex-col gap-[24px] w-full ">
           <div

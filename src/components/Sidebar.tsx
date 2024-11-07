@@ -73,7 +73,7 @@ const pathname = usePathname()
         }  w-full py-[48px] px-[24px] bg-white shadow-sidebar h-[100vh]`}
       >
         <div className="w-full h-full relative z-[999] flex flex-col items-center gap-[88px]">
-          <div className="flex items-center lg:justify-center justify-between w-full">
+          <a href="/" className="flex items-center lg:justify-center justify-between w-full">
             {showSidebar ? <Logo cl="h-[40px] lg:h-[52px]" /> : <LogoS />}
             <button
               className="w-6 h-6 lg:hidden cursor-pointer transition-all ease duration-300"
@@ -110,7 +110,7 @@ const pathname = usePathname()
                 </span>
               </div>
             </button>
-          </div>
+          </a>
 
           <div className="flex flex-col w-full gap-[24px]">
             <Link

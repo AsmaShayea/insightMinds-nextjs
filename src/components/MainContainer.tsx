@@ -201,7 +201,10 @@ const MainContainer = ({
        { showOptionsBar && <div className="flex items-center justify-between gap-[20px] flex-wrap">
           <div className="flex items-center gap-[16px]">
             {tabs.map((t, index) => { 
-              if(t.name == "تحليلات النصوص" && isMyBusiness == false){
+              // if(t.name == "تحليلات النصوص" && isMyBusiness == false){
+              //   return <></>
+              // }
+              if(t.name == "تقييم الموظفين" && isMyBusiness == false){
                 return <></>
               }
               return (

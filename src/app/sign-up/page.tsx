@@ -11,12 +11,11 @@ const SignUpPage = () => {
           <Image src="/Logo.svg" alt="brand" width={121.71} height={48} />
         </Link>
       </div>
-      <div className="py-20 sm:py-28 px-4 md:px-0">
+      <div className="py-20 sm:py-20 px-4 md:px-0">
         <div className="mx-auto max-w-[612px] bg-white rounded-2xl p-8 shadow-signup">
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-2 border-b border-[#000000]/5 pb-5">
-              <h3 className="font-bold text-black text-2xl leading-8 text-center">البيانات الاساسية</h3>
-              <p className="font-medium text-black/80 text-base leading-5 text-center">تسجيل حساب جديد</p>
+            <div className="flex flex-col items-center justify-center gap-2 border-b border-[#000000]/5 pb-5">
+              <h3 className="font-bold text-black text-2xl leading-8 text-center">تسجيل دخول</h3>
             </div>
             <div className="w-full max-w-[317px] mx-auto flex flex-col gap-4">
               <div className="flex flex-col gap-2">
@@ -64,7 +63,7 @@ const SignUpPage = () => {
                   }
                 />
               </div>
-              <div className="flex flex-col gap-2">
+              {/* <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-sm leading-[18px] text-right font-medium">
                   المدينة
                 </label>
@@ -101,7 +100,7 @@ const SignUpPage = () => {
                     "w-full rounded-2xl p-4 border border-lightGray outline-none focus:outline-none items-center"
                   }
                 />
-              </div>
+              </div> */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-sm leading-[18px] text-right font-medium">
                   رقم الهاتف
@@ -124,7 +123,7 @@ const SignUpPage = () => {
                 href="/dashboard"
                 className="py-3.5 px-4 bg-main hover:bg-[#4f54da] text-white rounded-full min-w-[127px] min-h-11 text-sm leading-[18px] text-center font-medium transition-all ease-in-out duration-200"
               >
-                التالي
+                تسجيل الدخول
               </Link>
             </div>
           </div>
