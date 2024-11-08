@@ -15,7 +15,7 @@ export default function Home() {
               <ul className="flex items-center gap-4 sm:gap-8">
                 <li>
                   <Link href="/sign-up" className="text-lg leading-6 text-black">
-                    حساب جديد
+                    تواصل مع المبيعات
                   </Link>
                 </li>
                 <li>
@@ -23,7 +23,7 @@ export default function Home() {
                     href="/sign-up"
                     className="text-base leading-normal sm:text-lg sm:leading-6 text-black bg-white/80 border border-[#29292E4D] py-2 sm:py-3.5 px-4 sm:px-6 rounded-lg"
                   >
-                    تسجيل الدخول
+                    دخول / تسجيل جديد
                   </Link>
                 </li>
               </ul>
