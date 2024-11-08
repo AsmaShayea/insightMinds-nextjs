@@ -37,9 +37,7 @@ export default function Home() {
                     نجاح علامتك التجارية يبدأ بالاستماع إلى عملائك
                   </h1>
                   <p className="text-xl leading-normal lg:text-2xl lg:leading-9 font-medium text-black text-center md:text-right">
-                    مع أداة الذكاء الصناعي للتحليل، ابنِ وطوّر علامتك التجارية بناءً على رغباتهم، واكسب ولاءهم لزيادة
-                    مبيعاتك.
-                  </p>
+                  مع أداة الذكاء الصناعي للتحليل، ابنِ وطوّر علامتك التجارية بناءً على رغباتهم، واكسب ولاءهم لزيادة مبيعاتك.                  </p>
                 </div>
               </div>
               <div className="md:absolute md:left-0 md:h-full md:w-full">
@@ -64,10 +62,10 @@ export default function Home() {
                 إدارة التعليقات من مكان واحد
               </h1>
               <p className="text-xl leading-normal lg:text-2xl lg:leading-9 font-medium text-black">
-                مراقبة جميع تعليقات عملائك والرد عليها بسهولة، دون التشتت بين المنصات مبيعاتك.
+                مراقبة جميع تعليقات عملائك والرد عليها بسهولة، دون التشتت بين المنصات.
               </p>
               <p className="text-xl leading-normal lg:text-2xl lg:leading-9 font-medium text-black">
-                اكتشف الجوانب التي أحبها عملاؤك وركز عليها، واعرف ما يحتاج إلى تحسين
+                اكتشف الجوانب التي أحبها عملاؤك وركز عليها، واعرف ما يحتاج إلى تحسين.
               </p>
             </div>
           </div>
@@ -203,8 +201,7 @@ export default function Home() {
                 راقب سمعتك في السوق
               </h1>
               <p className="text-xl leading-normal lg:text-2xl lg:leading-9 font-medium text-black">
-                راقب سمعتك في السوق <br />
-                نقوم بجمع الآراء والإشارات والهاشتاقات حول علامتك <br /> لتكوين نظرة شاملة عن تقييمك.
+                نقوم بجمع الآراء والإشارات والهاشتاقات حول علامتك لتكوين نظرة شاملة عن تقييمك.
               </p>
             </div>
           </div>
@@ -214,7 +211,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center justify-center bg-white/80 backdrop-blur-[20px] py-6 px-4">
-          <p className="text-center">جميع الحقوق محفوظة InsightMinds 2024 text-black</p>
+          <p className="text-center">جميع الحقوق محفوظة InsightMinds 2024</p>
         </div>
       </footer>
       {/* End Footer Section */}
