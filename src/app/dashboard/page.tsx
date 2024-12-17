@@ -37,7 +37,7 @@ const Dashboard = () => {
     ;(async ()=>{
       try {
         const rs = await axios.get(
-          "http://0.0.0.0:8000/get-business-data"
+          "http://13.53.122.23:8000/get-business-data"
         ) 
         
          router.push(`/dashboard/${rs?.data?.data.my_business[0]?.id}?myBusiness=true&progressStatus=${encodeURI(rs?.data?.data.my_business[0]?.progress_status == "completed" ? "completed" : "incomplete" )}`)
