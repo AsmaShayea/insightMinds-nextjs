@@ -34,7 +34,7 @@ const Dashboard = () => {
   const router = useRouter();
 
   useEffect(()=>{
-    ;(async ()=>{
+    ;(async ()=>{ 
       try {
         const rs = await axios.get(
           "http://13.53.122.23:8000/get-business-data"
